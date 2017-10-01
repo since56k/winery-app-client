@@ -11,10 +11,12 @@ import { AppComponent } from './app.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { LoginAdminComponent } from './components/admin/login-admin/login-admin.component';
 import { BuyerComponent } from './components/admin/buyer/buyer.component';
-import { ComapnyComponent } from './components/admin/comapny/comapny.component'
+import { CompanyComponent } from './components/admin/company/company.component'
+import { NavbarComponent } from './components/admin/navbar/navbar.component'
 
 //Services
 import { AdminService } from './services/admin/admin.service';
+
 
 
 
@@ -24,7 +26,8 @@ import { AdminService } from './services/admin/admin.service';
     AdminComponent,
     LoginAdminComponent,
     BuyerComponent,
-    ComapnyComponent
+    CompanyComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

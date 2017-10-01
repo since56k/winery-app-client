@@ -9,43 +9,43 @@ export class AdminService {
   
   //Manage Buyers
   getListBuyer() {
-    return this.http.get(`${this.BASE_URL}/api/buyer`)
+    return this.http.get(`${this.BASE_URL}/api/buyers`)
       .map((res) => res.json());
   }
   
   getBuyer(id) {
-    return this.http.get(`${this.BASE_URL}/api/buyer/${id}`)
+    return this.http.get(`${this.BASE_URL}/api/buyers/${id}`)
       .map((res) => res.json());
   }
   
   editBuyer(buyer) {
-    return this.http.put(`${this.BASE_URL}/api/buyer/${buyer.id}`, buyer)
+    return this.http.put(`${this.BASE_URL}/api/buyers/${buyer.id}`, buyer)
       .map((res) => res.json());
   }
   
   removeBuyer(id) {
-    return this.http.delete(`${this.BASE_URL}/api/buyer/${id}`)
+    return this.http.delete(`${this.BASE_URL}/api/buyers/${id}`)
       .map((res) => res.json());
   }
 
   //Manage Companies
   getListCompany() {
-    return this.http.get(`${this.BASE_URL}/api/company`)
+    return this.http.get(`${this.BASE_URL}/api/companies`)
       .map((res) => res.json());
   }
   
   getCompany(id) {
-    return this.http.get(`${this.BASE_URL}/api/company/${id}`)
+    return this.http.get(`${this.BASE_URL}/api/companies/${id}`)
       .map((res) => res.json());
   }
   
   editCompany(company) {
-    return this.http.put(`${this.BASE_URL}/api/company/${company.id}`, company)
+    return this.http.put(`${this.BASE_URL}/api/companies/${company.id}`, company)
       .map((res) => res.json());
   }
   
   removeCompany(id) {
-    return this.http.delete(`${this.BASE_URL}/api/company/${id}`)
+    return this.http.delete(`${this.BASE_URL}/api/companies/${id}`)
       .map((res) => res.json());
   }
 }

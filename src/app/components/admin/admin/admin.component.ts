@@ -10,9 +10,28 @@ import { Http } from '@angular/http';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+	dataListBuyer;
+	dataListCompany;
+
+  constructor(private handleData: AdminService) { }
 
   ngOnInit() {
+  	this.getListBuyer();
+  	this.getListCompany();
+  }
+
+  getListBuyer(){
+  	this.handleData.getListBuyer()
+  	.subscribe((buyers) => {
+  		this.dataListBuyer = buyers;
+    });
+  }
+
+  getListCompany(){
+  	this.handleData.getListCompany()
+  	.subscribe((companies) => {
+  		this.dataListCompany = companies;
+    });
   }
 
 }

@@ -1,11 +1,21 @@
-
-<p> admin-list Works! </p>
-<a [routerLink]="['/buyer', 1]"> View Details </a>
-
-<!-- <ul>
-    <li *ngFor="let recipe of recipeList">
-      name: {{ recipe.name }} <br>
-      description: {{ recipe.description }} <br>
-      <a [routerLink]="['/recipe', recipe._id]">View Details</a>
-    </li>
-  </ul> -->
+<app-navbar></app-navbar>
+<h1>Admin /</h1>
+<h2>Buyer List</h2>
+	<ul>
+	    <li *ngFor="let buyer of dataListBuyer">
+	      name: {{ buyer.name }} <br>
+	      description: {{ buyer.description }} <br>
+	      <a [routerLink]="['/buyer', buyer._id]">View Details Buyer</a>
+	      <button type="submit">Delete</button>
+	    </li>
+	</ul>
+<br>
+<h2>Company List</h2>
+<ul>
+	<li *ngFor="let company of dataListCompany">
+	    name: {{ company.name }} <br>
+	    description: {{ company.description }} <br>
+	    <a [routerLink]="['/company', company._id]">View Details Company</a>
+	    <button type="submit">Delete</button>
+	</li>
+</ul>
