@@ -8,7 +8,7 @@
     <input type="text" [(ngModel)]="newBuyer.username" name="username" required />
 
     <label> Email </label>
-    <input type="text" [(ngModel)]="newBuyer.email" name="name" required />
+    <input type="text" [(ngModel)]="newBuyer.email" name="email" required />
 
     <label> Role </label>
     <!-- <input type="text" [(ngModel)]="newBuyer.role" name="name" required /> -->
@@ -33,6 +33,9 @@
 	      name: {{ buyer.username }} <br>
 	      email: {{ buyer.email }} <br>
 	      role: {{buyer.role}}<br>
+	      <div class="phone-thumbnail">
+        	<img height="300" [src]="buyer.image" />
+      	</div>
 	      <a [routerLink]="['/admin/buyer', buyer._id]">View Details Buyer</a>
 	      <button type="submit">Delete</button>
 	    </li>

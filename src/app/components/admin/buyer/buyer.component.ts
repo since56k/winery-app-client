@@ -4,6 +4,8 @@ import { BuyerService } from '../../../services/buyer/buyer.service';
 
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
+// const URL = '/api/';
+const URL = 'http://localhost:3000/api/buyers/newbuyer';
 
 @Component({
   selector: 'app-buyer',
@@ -19,16 +21,13 @@ export class BuyerComponent implements OnInit {
     { value: 'Guest', display: 'Guest' }
   ];
 
-  uploader: FileUploader = new FileUploader({
-    url: `/phones/`
-  });
+  public uploader:FileUploader = new FileUploader({url: URL});
 
   newBuyer = {
     username: '',
     email: '',
     role: ''
   };
-
 
   feedback: string;
 
@@ -56,6 +55,7 @@ export class BuyerComponent implements OnInit {
     this.buyerService.getListBuyer()
     .subscribe((buyer) => {
       this.buyers = buyer;
+      console.log(this.buyers)
     });
   }
 
