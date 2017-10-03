@@ -37,13 +37,11 @@
 	      <div class="phone-thumbnail">
         	<img height="300" [src]="buyer.image" />
       	</div>
-	      <a [routerLink]="['/admin/buyer', buyer._id]">View Details Buyer</a>
+        <button> <a [routerLink]="['/buyer/buyer-profile', buyer._id]">View Details Buyer</a></button>   
 	      <button type="submit" (click)="deleteBuyer(buyer._id)">Delete</button>
 	    </li>
 	</ul>
 <br>
 <a [routerLink]="['']"> Back to list </a>
 
-<!-- 
-<h2>Buyer Details</h2>
-<span>The Id of this buyer is: <strong>{{ buyer?._id }}</strong></span> -->
+

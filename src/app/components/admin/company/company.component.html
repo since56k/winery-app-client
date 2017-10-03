@@ -17,8 +17,10 @@
 	     	name: {{ company.username }} <br>
 	      email: {{ company.email }} <br>
 	      role: {{company.role}}<br>
-	      
-	    <a [routerLink]="['/admin/company', company._id]">View Details Company</a>
+			
+			<button>
+	   			<a [routerLink]="['/company/company-profile', company._id]">View Details Company</a>
+			</button>
 	    <button type="submit" (click)="deleteCompany(company._id)">Delete</button>
 	</li>
 </ul>
@@ -28,5 +30,4 @@
 	
 </form>
 
-<!-- <h2>Company Details</h2> -->
-<!-- <span>The Id of this company is: <strong>{{ company?._id }}</strong></span> -->
+
