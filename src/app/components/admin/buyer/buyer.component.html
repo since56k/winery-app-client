@@ -26,6 +26,7 @@
 </form>
 
 <span> {{ feedback }} </span>
+<span>{{message}}</span>
 <br>
 <h3>Buyer List</h3>
 	<ul>
@@ -37,7 +38,7 @@
         	<img height="300" [src]="buyer.image" />
       	</div>
 	      <a [routerLink]="['/admin/buyer', buyer._id]">View Details Buyer</a>
-	      <button type="submit" (click)="deleteBuyer()">Delete</button>
+	      <button type="submit" (click)="deleteBuyer(buyer._id)">Delete</button>
 	    </li>
 	</ul>
 <br>

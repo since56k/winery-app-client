@@ -35,6 +35,7 @@ export class BuyerComponent implements OnInit {
 
   feedback: string;
 	buyers: any;
+  message: any;
 
   constructor(
   	private route: ActivatedRoute,
@@ -71,6 +72,16 @@ export class BuyerComponent implements OnInit {
 
     this.uploader.uploadAll();
     this.getListBuyer();
+  }
+
+  deleteBuyer(buyerId) {
+  if (window.confirm('Are you sure?')) {
+    this.buyerService.removeBuyer(buyerId)
+      .subscribe(res => {
+        this.message = res.message; 
+        this.getListBuyer();
+      });
+    }
   }
 }
 

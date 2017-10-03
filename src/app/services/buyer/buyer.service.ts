@@ -30,9 +30,9 @@ export class BuyerService {
     return this.http.put(`${apiUrl}/buyers/${buyer.id}`, buyer)
       .map((res) => res.json());
   }
-  
+
   removeBuyer(id) {
-    return this.http.delete(`${apiUrl}/buyers/${id}`)
+    return this.http.delete(`${apiUrl}/buyers/delete/${id}`)
       .map((res) => res.json());
   }
 
