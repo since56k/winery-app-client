@@ -1,6 +1,10 @@
 <h2>Create New Company</h2>
-<form>
-	
+<form (ngSubmit)="handleNewCompany(companyForm)" #companyForm="ngForm" >
+  <label>name</label>
+  <input type="text" name="username" [(ngModel)]="username">
+  <input type="text" name="email" [(ngModel)]="email">
+  <input type="text" name="role" [(ngModel)]="role">
+  <button type="submit">Add</button>
 </form>
 <h3>Company List</h3>
 <ul>

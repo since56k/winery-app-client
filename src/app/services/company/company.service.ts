@@ -20,6 +20,11 @@ export class CompanyService {
     return this.http.get(`${apiUrl}/companies/${id}`)
       .map((res) => res.json());
   }
+
+  newCompany(company) {
+    return this.http.post(`${apiUrl}/companies/newcompany`, company)
+      .map((res) => res.json());
+  }
   
   editCompany(company) {
     return this.http.put(`${apiUrl}/companies/${company.id}`, company)
