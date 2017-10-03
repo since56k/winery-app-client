@@ -11,10 +11,18 @@ import { routes } from './routes/app.routing';
 //Admin Compoenents 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
-import { LoginAdminComponent } from './components/admin/login-admin/login-admin.component';
 import { BuyerComponent } from './components/admin/buyer/buyer.component';
 import { CompanyComponent } from './components/admin/company/company.component'
-import { NavbarAdminComponent } from './components/admin/navbar-admin/navbar-admin.component';
+
+//Buyer Components
+import { BuyerProfileComponent } from './components/buyer/buyer-profile/buyer-profile.component';
+
+//Company Components
+import { CompanyProfileComponent } from './components/company/company-profile/company-profile.component';
+
+//Pages
+import { NavbarAdminComponent } from './pages/admin-pages/navbar-admin/navbar-admin.component';
+import { LoginAdminComponent } from './pages/admin-pages/login-admin/login-admin.component';
 
 //Services
 import { AdminService } from './services/admin/admin.service';
@@ -26,7 +34,6 @@ import { FileSelectDirective} from "ng2-file-upload";
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +42,9 @@ import { FileSelectDirective} from "ng2-file-upload";
     LoginAdminComponent,
     BuyerComponent,
     CompanyComponent,
-    NavbarAdminComponent
+    NavbarAdminComponent,
+    BuyerProfileComponent,
+    CompanyProfileComponent
   ],
   imports: [
     BrowserModule,
