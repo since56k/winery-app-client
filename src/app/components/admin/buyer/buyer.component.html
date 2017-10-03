@@ -1,5 +1,20 @@
-<app-navbar></app-navbar>
-<p>
-  buyer works!
-</p>
+<h2>Buyer Details</h2>
+<span>The Id of this buyer is: <strong>{{ buyer?._id }}</strong></span>
 <a [routerLink]="['']"> Back to list </a>
+
+
+<h2>Create New Buyer</h2>
+<br>
+
+<br>
+<h3>Buyer List</h3>
+	<ul>
+	    <li *ngFor="let buyer of buyers">
+	      name: {{ buyer.name }} <br>
+	      description: {{ buyer.description }} <br>
+	      <a [routerLink]="['/admin/buyer', buyer._id]">View Details Buyer</a>
+	      <button type="submit">Delete</button>
+	    </li>
+	</ul>
+<br>
+

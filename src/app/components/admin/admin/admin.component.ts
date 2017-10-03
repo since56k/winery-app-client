@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../services/admin/admin.service';
-import { Http } from '@angular/http';
+import { FileSelectDirective } from "ng2-file-upload";
+
 
 @Component({
   selector: 'app-admin',
@@ -13,25 +14,14 @@ export class AdminComponent implements OnInit {
 	dataListBuyer;
 	dataListCompany;
 
-  constructor(private handleData: AdminService) { }
+  constructor(private adminService: AdminService) { }
 
   ngOnInit() {
-  	this.getListBuyer();
-  	this.getListCompany();
+  	
   }
 
-  getListBuyer(){
-  	this.handleData.getListBuyer()
-  	.subscribe((buyers) => {
-  		this.dataListBuyer = buyers;
-    });
-  }
-
-  getListCompany(){
-  	this.handleData.getListCompany()
-  	.subscribe((companies) => {
-  		this.dataListCompany = companies;
-    });
-  }
+  
 
 }
+
+

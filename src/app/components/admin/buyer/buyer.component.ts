@@ -1,15 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BuyerService } from '../../../services/buyer/buyer.service';
 
 @Component({
   selector: 'app-buyer',
   templateUrl: './buyer.component.html',
-  styleUrls: ['./buyer.component.css']
+  styleUrls: ['./buyer.component.css'],
+  providers: [BuyerService]
 })
 export class BuyerComponent implements OnInit {
 
-  constructor() { }
+	buyers: any;
+
+  constructor(
+  	private route: ActivatedRoute,
+  	private buyerService: BuyerService
+  	) { }
 
   ngOnInit() {
+    this.getListBuyer();
   }
 
+  getListBuyer(){
+    this.buyerService.getListBuyer()
+    .subscribe((buyer) => {
+      this.buyers = buyer;
+    });
+  }
 }
+
+
+
+
