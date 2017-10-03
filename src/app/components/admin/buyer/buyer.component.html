@@ -37,7 +37,9 @@
 	      <div class="phone-thumbnail">
         	<img height="300" [src]="buyer.image" />
       	</div>
-        <button> <a [routerLink]="['/buyer/buyer-profile', buyer._id]">View Details Buyer</a></button>   
+        <button> 
+          <a [routerLink]="['/buyer/buyer-profile', buyer._id]">View Details Buyer</a>
+        </button>   
 	      <button type="submit" (click)="deleteBuyer(buyer._id)">Delete</button>
 	    </li>
 	</ul>

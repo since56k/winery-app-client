@@ -11,10 +11,24 @@ import { BuyerService } from '../../../services/buyer/buyer.service';
 })
 export class BuyerProfileComponent implements OnInit {
 
-  constructor() { }
+	buyer: any;
+
+  constructor(
+  	private route: ActivatedRoute,
+  	private buyerService: BuyerService
+  	) { }
 
   ngOnInit() {
+  	this.route.params.subscribe(params => {
+    this.getBuyer(params['id']);
+ 		})
+	}
 
+  getBuyer(id) {
+    this.buyerService.getBuyer(id)
+      .subscribe((buyer) => {
+        this.buyer = buyer;
+       })
   }
 
 }
