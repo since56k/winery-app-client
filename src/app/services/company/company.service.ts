@@ -32,7 +32,7 @@ export class CompanyService {
   }
   
   removeCompany(id) {
-    return this.http.delete(`${apiUrl}/companies/${id}`)
+    return this.http.delete(`${apiUrl}/companies/delete/${id}`)
       .map((res) => res.json());
   }
 }

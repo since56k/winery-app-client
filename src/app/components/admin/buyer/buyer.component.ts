@@ -1,10 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute }    from "@angular/router";
+
+//Services
 import { BuyerService } from '../../../services/buyer/buyer.service';
 
+//Third part
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
-// const URL = '/api/';
+//URL = '/api/';
 const URL = 'http://localhost:3000/api/buyers/newbuyer';
 
 @Component({
@@ -13,6 +16,7 @@ const URL = 'http://localhost:3000/api/buyers/newbuyer';
   styleUrls: ['./buyer.component.css'],
   providers: [BuyerService]
 })
+
 export class BuyerComponent implements OnInit {
 
   public roles = [
@@ -30,11 +34,11 @@ export class BuyerComponent implements OnInit {
   };
 
   feedback: string;
-
 	buyers: any;
 
   constructor(
   	private route: ActivatedRoute,
+    private router: Router,
   	private buyerService: BuyerService
   	) { }
 
@@ -55,7 +59,6 @@ export class BuyerComponent implements OnInit {
     this.buyerService.getListBuyer()
     .subscribe((buyer) => {
       this.buyers = buyer;
-      console.log(this.buyers)
     });
   }
 

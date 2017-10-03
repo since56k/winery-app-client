@@ -37,7 +37,7 @@
         	<img height="300" [src]="buyer.image" />
       	</div>
 	      <a [routerLink]="['/admin/buyer', buyer._id]">View Details Buyer</a>
-	      <button type="submit">Delete</button>
+	      <button type="submit" (click)="deleteBuyer()">Delete</button>
 	    </li>
 	</ul>
 <br>

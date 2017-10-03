@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute }    from "@angular/router";
+
+//Services
 import { CompanyService } from '../../../services/company/company.service';
 
 @Component({
@@ -18,10 +20,11 @@ export class CompanyComponent implements OnInit {
 
 	companies: any;
   message: any;
-
+  companyId: any;
 
   constructor(
   	private route: ActivatedRoute,
+    private router: Router,
   	private companyService: CompanyService
   	) { }
 
@@ -33,17 +36,29 @@ export class CompanyComponent implements OnInit {
     this.companyService.getListCompany()
     .subscribe((company) => {
       this.companies = company;
+      console.log(company)
     });
   }
 
   handleNewCompany(form) {
     const newCompany = {username: form.value.username, email: form.value.email, role: form.value.role };
-      this.companyService.newCompany(newCompany).subscribe(res => {
-      this.message = res.message; 
-
-      this.getListCompany();
+      this.companyService.newCompany(newCompany)
+      .subscribe(res => {
+        this.message = res.message; 
+        this.getListCompany();
     });
   }
+
+  deleteCompany(companyId) {
+  if (window.confirm('Are you sure?')) {
+    this.companyService.removeCompany(companyId)
+      .subscribe(res => {
+        this.message = res.message; 
+        this.getListCompany();
+      });
+    }
+  }
+
 }
 
 
