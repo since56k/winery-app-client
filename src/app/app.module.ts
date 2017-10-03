@@ -22,7 +22,8 @@ import { BuyerService } from './services/buyer/buyer.service';
 import { CompanyService } from './services/company/company.service';
 
 //Third parts module
-import { FileSelectDirective } from "ng2-file-upload";
+import { FileSelectDirective} from "ng2-file-upload";
+
 
 
 

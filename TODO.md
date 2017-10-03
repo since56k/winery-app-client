@@ -10,6 +10,39 @@
 	<app-navbar-admin *ngIf="user && user.role === 'admin'"></app-navbar-admin>
 		</div>
 
+		// ngOnInit() {
+//     this.getListBuyer();
+//     this.getListCompany();
+//   }
+
+//   getListBuyer(){
+//     this.adminService.getListBuyer()
+//     .subscribe((buyers) => {
+//       this.dataListBuyer = buyers;
+//     });
+//   }
+
+//   getListCompany(){
+//     this.adminService.getListCompany()
+//     .subscribe((companies) => {
+//       this.dataListCompany = companies;
+//     });
+//   }
+
+// getBuyer(id) {
+//     this.buyerService.getBuyer(id)
+//       .subscribe((buyer) => {
+//         this.buyer = buyer;
+         
+//     })
+//   }
+
+// ngOnInit() {
+//     this.route.params.subscribe(params => {
+//       this.getBuyer(params['id']);
+//     });
+//   }
+
 
 -- refactoring:
 

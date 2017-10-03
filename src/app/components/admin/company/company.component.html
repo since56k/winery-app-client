@@ -5,8 +5,9 @@
 <h3>Company List</h3>
 <ul>
 	<li *ngFor="let company of companies">
-	    name: {{ company.name }} <br>
-	    description: {{ company.description }} <br>
+	     	name: {{ company.username }} <br>
+	      email: {{ company.email }} <br>
+	      role: {{company.role}}<br>
 	    <a [routerLink]="['/admin/company', company._id]">View Details Company</a>
 	    <button type="submit">Delete</button>
 	</li>

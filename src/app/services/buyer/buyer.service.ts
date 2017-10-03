@@ -20,6 +20,11 @@ export class BuyerService {
     return this.http.get(`${apiUrl}/buyers/${id}`)
       .map((res) => res.json());
   }
+
+  newBuyer(buyer: Object) {
+    return this.http.post(`${apiUrl}/buyers/newbuyer`, buyer)
+    .map((res) => res.json());
+  }
   
   editBuyer(buyer) {
     return this.http.put(`${apiUrl}/buyers/${buyer.id}`, buyer)

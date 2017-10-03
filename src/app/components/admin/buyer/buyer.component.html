@@ -1,20 +1,45 @@
-<h2>Buyer Details</h2>
-<span>The Id of this buyer is: <strong>{{ buyer?._id }}</strong></span>
-<a [routerLink]="['']"> Back to list </a>
-
 
 <h2>Create New Buyer</h2>
 <br>
+<form style="width: 50%">
+  <fieldset>
+    <legend> Buyer Fields </legend>
+    <label> Username </label>
+    <input type="text" [(ngModel)]="newBuyer.username" name="username" required />
 
+    <label> Email </label>
+    <input type="text" [(ngModel)]="newBuyer.email" name="name" required />
+
+    <label> Role </label>
+    <!-- <input type="text" [(ngModel)]="newBuyer.role" name="name" required /> -->
+    <select [(ngModel)]="newBuyer.role" name="role">
+        <option *ngFor="let role of roles" [value]="role.value">  
+        {{role.display}}
+        </option>
+    </select>
+ 		<br>
+ 		<label>Image</label>
+    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+
+  </fieldset>
+  <button (click)="submit()"> submit </button>
+</form>
+
+<span> {{ feedback }} </span>
 <br>
 <h3>Buyer List</h3>
 	<ul>
 	    <li *ngFor="let buyer of buyers">
-	      name: {{ buyer.name }} <br>
-	      description: {{ buyer.description }} <br>
+	      name: {{ buyer.username }} <br>
+	      email: {{ buyer.email }} <br>
+	      role: {{buyer.role}}<br>
 	      <a [routerLink]="['/admin/buyer', buyer._id]">View Details Buyer</a>
 	      <button type="submit">Delete</button>
 	    </li>
 	</ul>
 <br>
+<a [routerLink]="['']"> Back to list </a>
 
+<!-- 
+<h2>Buyer Details</h2>
+<span>The Id of this buyer is: <strong>{{ buyer?._id }}</strong></span> -->
