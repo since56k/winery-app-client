@@ -11,7 +11,8 @@ import { CompanyService } from '../../../services/company/company.service';
 export class CompanyComponent implements OnInit {
 
 	companies: any;
-  results: any;
+  message: any;
+
 
   constructor(
   	private route: ActivatedRoute,
@@ -32,9 +33,8 @@ export class CompanyComponent implements OnInit {
   handleNewCompany(form) {
     const newCompany = {username: form.value.username, email: form.value.email, role: form.value.role };
       this.companyService.newCompany(newCompany).subscribe(res => {
-      this.results = res;
-    console.log(this.results)
-      
+      this.message = res.message; 
+
       this.getListCompany();
     });
   }

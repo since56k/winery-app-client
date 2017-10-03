@@ -67,6 +67,7 @@ export class BuyerComponent implements OnInit {
     };
 
     this.uploader.uploadAll();
+    this.getListBuyer();
   }
 }
 
