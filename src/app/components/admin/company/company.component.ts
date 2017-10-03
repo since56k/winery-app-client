@@ -10,6 +10,12 @@ import { CompanyService } from '../../../services/company/company.service';
 })
 export class CompanyComponent implements OnInit {
 
+  public roles = [
+    { value: 'Buyer', display: 'Buyer' },
+    { value: 'Company', display: 'Company' },
+    { value: 'Guest', display: 'Guest' }
+  ];
+
 	companies: any;
   message: any;
 
