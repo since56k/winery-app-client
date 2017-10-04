@@ -45,14 +45,9 @@
 
 
 -- refactoring:
-
--1 services
-
--2 components
--2.1 admin page
-
--3 pages
-
--4 provider
+- 1 Refactoring compoennts in page and vice
+- 2 Sign In, Log out, protecting routing.
+- 3 role in signup, company and buyer
+- 4 display info from id session
 
 
