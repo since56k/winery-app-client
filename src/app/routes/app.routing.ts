@@ -2,7 +2,9 @@ import { Routes } from '@angular/router';
 
 //Routes for Admin
 import { LoginAdminComponent } from '../pages/admin-pages/login-admin/login-admin.component';
+
 import { LoginUserComponent } from '../pages/user-pages/login-user/login-user.component';
+import { SignupUserComponent } from '../pages/user-pages/signup-user/signup-user.component';
 
 import { AdminComponent } from '../components/admin/admin/admin.component';
 import { BuyerComponent } from '../components/admin/buyer/buyer.component';
@@ -27,6 +29,7 @@ export const routes: Routes = [
 
   // * User share Routes * //
   { path: 'auth/signin', component: LoginUserComponent },
+  { path: 'auth/signup', component: SignupUserComponent },
 
   // * Buyer Routes * //
   //{ path: 'buyer/buyer-profile/:id', component: BuyerProfileComponent },
@@ -34,7 +37,7 @@ export const routes: Routes = [
   { path: 'buyer/buyer-profile', canActivate: [RequireAuthService], children: [
     { path: '', component: BuyerProfileComponent },
     { path: ':id', component: BuyerProfileComponent }
-  ]},
+  ] },
 
   // * Company Routes * //
   { path: 'company/company-profile/:id', component: CompanyProfileComponent },

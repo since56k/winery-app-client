@@ -84,6 +84,7 @@ export class BuyerComponent implements OnInit {
       .subscribe(res => {
         this.message = res.message; 
         this.getListBuyer();
+        console.log(res);
       });
     }
   }

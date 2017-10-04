@@ -38,8 +38,7 @@ import { RequireAuthService } from './routes/guards/require-auth.service';
 import { FileSelectDirective} from "ng2-file-upload";
 import { NavbarUserComponent } from './pages/user-pages/navbar-user/navbar-user.component';
 import { FooterUserComponent } from './pages/user-pages/footer-user/footer-user.component';
-
-
+import { SignupUserComponent } from './pages/user-pages/signup-user/signup-user.component';
 
 
 @NgModule({
@@ -55,7 +54,8 @@ import { FooterUserComponent } from './pages/user-pages/footer-user/footer-user.
     CompanyProfileComponent,
     LoginUserComponent,
     NavbarUserComponent,
-    FooterUserComponent
+    FooterUserComponent,
+    SignupUserComponent
   ],
   imports: [
     BrowserModule,
