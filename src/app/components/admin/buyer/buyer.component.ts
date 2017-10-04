@@ -71,7 +71,11 @@ export class BuyerComponent implements OnInit {
     };
 
     this.uploader.uploadAll();
+    
+     //show realtime NOT WORKS
     this.getListBuyer();
+
+    
   }
 
   deleteBuyer(buyerId) {

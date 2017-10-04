@@ -23,14 +23,20 @@ import { CompanyProfileComponent } from './components/company/company-profile/co
 //Pages
 import { NavbarAdminComponent } from './pages/admin-pages/navbar-admin/navbar-admin.component';
 import { LoginAdminComponent } from './pages/admin-pages/login-admin/login-admin.component';
+import { LoginUserComponent } from './pages/user-pages/login-user/login-user.component';
 
 //Services
 import { AdminService } from './services/admin/admin.service';
 import { BuyerService } from './services/buyer/buyer.service';
 import { CompanyService } from './services/company/company.service';
 
+import { RequireAuthService } from './routes/guards/require-auth.service';
+
 //Third parts module
 import { FileSelectDirective} from "ng2-file-upload";
+import { NavbarUserComponent } from './pages/user-pages/navbar-user/navbar-user.component';
+import { FooterUserComponent } from './pages/user-pages/footer-user/footer-user.component';
+
 
 
 
@@ -44,7 +50,10 @@ import { FileSelectDirective} from "ng2-file-upload";
     CompanyComponent,
     NavbarAdminComponent,
     BuyerProfileComponent,
-    CompanyProfileComponent
+    CompanyProfileComponent,
+    LoginUserComponent,
+    NavbarUserComponent,
+    FooterUserComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +65,8 @@ import { FileSelectDirective} from "ng2-file-upload";
   providers: [
     AdminService,
     BuyerService,
-    CompanyService
+    CompanyService,
+    RequireAuthService
   ],
   
   bootstrap: [AppComponent]
