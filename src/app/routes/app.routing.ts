@@ -16,9 +16,10 @@ import { RequireAuthService } from './guards/require-auth.service';
 
 
 export const routes: Routes = [
-	// * Admin Routes * //
-
+  // * Default Route * //
   { path: '', redirectTo: 'admin', pathMatch: 'full' },
+
+	// * Admin Routes * //
   { path: 'admin', component: AdminComponent },
   { path: 'admin/buyers', component: BuyerComponent },
   { path: 'admin/companies', component: CompanyComponent },
@@ -37,6 +38,10 @@ export const routes: Routes = [
 
   // * Company Routes * //
   { path: 'company/company-profile/:id', component: CompanyProfileComponent },
+
+  // * Redirect if not found * //
+  { path: '**', redirectTo: 'admin', pathMatch: 'full' },
+
 ];
 
 

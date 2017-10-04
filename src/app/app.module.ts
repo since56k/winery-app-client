@@ -30,6 +30,8 @@ import { AdminService } from './services/admin/admin.service';
 import { BuyerService } from './services/buyer/buyer.service';
 import { CompanyService } from './services/company/company.service';
 
+//Auth services
+import { AuthService } from './services/auth/auth.service';
 import { RequireAuthService } from './routes/guards/require-auth.service';
 
 //Third parts module
@@ -66,7 +68,8 @@ import { FooterUserComponent } from './pages/user-pages/footer-user/footer-user.
     AdminService,
     BuyerService,
     CompanyService,
-    RequireAuthService
+    RequireAuthService,
+    AuthService
   ],
   
   bootstrap: [AppComponent]
