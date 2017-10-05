@@ -1,0 +1,17 @@
+<div class="item-image">
+  <i class="fa fa-picture-o fa-6"></i>
+</div>
+<div class="item-name">{{name}}</div>
+<div class="item-price">
+  {{getCurrency()}}{{price}}
+</div>
+
+<div class="list-items">
+  <div class="list-item" *ngFor="let item of items">
+    <app-cart
+      [name]="item.name"
+      [price]="item.price"
+      [currency]="item.currency">
+    </app-cart>
+  </div>
+</div>

@@ -44,10 +44,13 @@
 //   }
 
 
--- refactoring:
-- 1 Refactoring compoennts in page and vice
-- 2 Sign In, Log out, protecting routing.
-- 3 role in signup, company and buyer
-- 4 display info from id session
+-- refactoring
+-- 1 create area for admin and company 
+-- 2 signin / up with role verification 
+-- 3 update backend and update info frontend
+-- 4 display all products and company in buyer
+-- 5 display own company products in company
+-- 6 cart buyer
 
+-- Google Maps and save it in database
 

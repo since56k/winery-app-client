@@ -15,7 +15,7 @@ const apiUrl = environment.apiUrl + '/auth';
 export class AuthService {
 
   private initialized: boolean;
-  private user: User;
+  private user: User | null;
   private userChange: Subject<User | null> = new Subject();
 
   // Observable string stream
@@ -26,6 +26,10 @@ export class AuthService {
   private setUser(user: User = null) {
     this.user = user;
     this.userChange.next(user);
+  }
+
+  getUser() : User | null {
+    return this.user;
   }
 
   signup(user: User) {

@@ -19,8 +19,6 @@ export class SigninComponent implements OnInit {
   error: string;
   message: any;
  
-
-
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
@@ -32,14 +30,14 @@ export class SigninComponent implements OnInit {
       (user) => {
       	if(user.id){
       		this.user = user,
-      		this.router.navigate(['/buyer/buyer-profile']);
+      		this.router.navigate(['/buyer/buyer-profile/' + this.user.id]);
       	} else {this.message = user.message} 	
       },
       (err) => this.error = err
     );
   }
-
 }
+
 
 
 

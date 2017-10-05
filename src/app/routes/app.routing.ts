@@ -4,6 +4,8 @@ import { Routes } from '@angular/router';
 import { LoginAdminComponent } from '../pages/admin-pages/login-admin/login-admin.component';
 
 //change this with pages
+import { SigninComponent } from '../components/auth/signin/signin.component';
+
 import { LoginUserComponent } from '../pages/user-pages/login-user/login-user.component';
 import { SignupUserComponent } from '../pages/user-pages/signup-user/signup-user.component';
 
@@ -15,6 +17,10 @@ import { BuyerProfileComponent } from '../components/buyer/buyer-profile/buyer-p
 import { CompanyProfileComponent } from '../components/company/company-profile/company-profile.component';
 
 import { RequireAuthService } from './guards/require-auth.service';
+
+//Playground
+import { CartComponent } from '../playground/shop/cart/cart.component';
+import { CartService } from '../playground/service/cart.service';
 
 
 
@@ -29,22 +35,29 @@ export const routes: Routes = [
   { path: 'login-admin', component: LoginAdminComponent },
 
   // * User share Routes * //
-  { path: 'auth/signin', component: LoginUserComponent },
+  { path: 'auth/signin', component: SigninComponent },
   { path: 'auth/signup', component: SignupUserComponent },
 
   // * Buyer Routes * //
-  //{ path: 'buyer/buyer-profile/:id', component: BuyerProfileComponent },
-
   { path: 'buyer/buyer-profile', canActivate: [RequireAuthService], children: [
     { path: '', component: BuyerProfileComponent },
     { path: ':id', component: BuyerProfileComponent }
   ] },
 
   // * Company Routes * //
-  { path: 'company/company-profile/:id', component: CompanyProfileComponent },
+  { path: 'company/company-profile', children: [
+    { path: '', component: CompanyProfileComponent },
+    { path: ':id', component: CompanyProfileComponent }
+  ] },
+
+  // * Cart Routes * //
+  { path: 'cart', children: [
+    { path: '', component: CartComponent },
+    { path: ':id', component: CartComponent }
+  ] },
 
   // * Redirect if not found * //
-  { path: '**', redirectTo: 'admin', pathMatch: 'full' },
+  { path: '**', redirectTo: 'auth/signin', pathMatch: 'full' },
 
 ];
 

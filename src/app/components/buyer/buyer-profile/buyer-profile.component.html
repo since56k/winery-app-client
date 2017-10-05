@@ -1,4 +1,4 @@
-<div [ngClass]="{empty: loading, 'is-user': user, 'is-anon': anon}">
+<div>
   <div *ngIf="loading">
     <span class="username text">Loading</span>
   </div>
@@ -9,12 +9,13 @@
 		<button>
 			<a [routerLink]="['/buyer/products']">My products list (favorite - cart)</a>
 		</button>
-    <span class="username text">{{user.username}}</span>
+    <span class="username text">{{user}}</span>
     <!-- <app-auth-logout></app-auth-logout> -->
-  </div>
-  <div *ngIf="!loading && anon">
-    <a (click)="toggleForms()">login or signup</a>
-    <app-signin *ngIf="formsVisible"></app-signin>
-    <app-signup *ngIf="formsVisible"></app-signup>
+    <button (click)="logout()">logout</button>
   </div>
 </div>
+
+<span>
+  {{user}}
+</span>
+

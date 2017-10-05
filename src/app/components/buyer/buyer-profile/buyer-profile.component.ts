@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 import { User } from '../../../models/user.model';
 
@@ -12,33 +13,36 @@ import { AuthService } from '../../../services/auth/auth.service';
   templateUrl: './buyer-profile.component.html',
   styleUrls: ['./buyer-profile.component.css']
 })
-export class BuyerProfileComponent implements OnInit {
+export class BuyerProfileComponent implements OnInit, OnDestroy {
+
+  subscriptions = [];
 
 	buyer: any;
-  loading: boolean = true;
-  anon: boolean;
+
   user: User;
-  formsVisible: boolean = false;
 
   constructor(
   	private route: ActivatedRoute,
   	private buyerService: BuyerService,
-    private authService: AuthService
-  	) { }
-
-  private setUser(user: User | null) {
-    this.loading = false;
-    this.user = user;
-    this.anon = !user;
+    private authService: AuthService,
+    private router: Router
+  ) {
+    console.log("so that i can break point");
   }
 
+
   ngOnInit() {
-      this.authService.userChange$.subscribe((user) => {
-      this.setUser(user)
+      //get user from sigin
+      this.user = this.authService.getUser();
+      let subscription = this.authService.userChange$.subscribe((user) => {
+        this.user = user;
       });
 
+      this.subscriptions.push(subscription);
+
+      //call get buyer if i get param from route
       this.route.params.subscribe(params => {
-      this.getBuyer(params['id']);
+        this.getBuyer(params['id']);
  		  })
 	}
 
@@ -49,13 +53,19 @@ export class BuyerProfileComponent implements OnInit {
       .subscribe((buyer) => {
         this.buyer = buyer;
        })
-    }
-    
+    }   
   }
 
-  toggleForms() {
-    this.formsVisible = !this.formsVisible;
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription) => subscription.unsubscribe());
   }
 
+  logout() {
+    this.authService.logout().subscribe();
+      this.router.navigate(['/']);
+  }
 }
+
+
+
 

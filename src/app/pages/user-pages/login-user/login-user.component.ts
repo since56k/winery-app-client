@@ -19,7 +19,7 @@ export class LoginUserComponent implements OnInit {
  
 
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService) {}
 
   ngOnInit() {
   }
@@ -33,3 +33,5 @@ export class LoginUserComponent implements OnInit {
   }
 
 }
+
+

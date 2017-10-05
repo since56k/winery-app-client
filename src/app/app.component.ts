@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-
+import { AuthService } from './services/auth/auth.service';
 
 
 @Component({
@@ -10,14 +10,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
-  // loading: true
-  // user: User;
 
-	// on init
-		// get /auth/me to see if we are logged in
-		  // set loading to false
-			// set this.user = to that response
-
-		// subscribe to changes to user
-			// set this.user = to that response
+  constructor(private authService: AuthService) {
+  	this.authService.me().subscribe();
+  }
 }

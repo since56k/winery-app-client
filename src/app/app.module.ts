@@ -46,6 +46,12 @@ import { RequireAuthService } from './routes/guards/require-auth.service';
 import { FileSelectDirective} from "ng2-file-upload";
 
 
+//Playground
+import { CartComponent } from './playground/shop/cart/cart.component';
+import { CartService } from './playground/service/cart.service';
+import { ProductService } from './playground/service/product.service';
+
+
 
 
 @NgModule({
@@ -59,12 +65,12 @@ import { FileSelectDirective} from "ng2-file-upload";
     NavbarAdminComponent,
     BuyerProfileComponent,
     CompanyProfileComponent,
-    LoginUserComponent,
     NavbarUserComponent,
     FooterUserComponent,
     SignupUserComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -78,7 +84,8 @@ import { FileSelectDirective} from "ng2-file-upload";
     BuyerService,
     CompanyService,
     RequireAuthService,
-    AuthService
+    AuthService,
+    CartService
   ],
   
   bootstrap: [AppComponent]
