@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 //Routes for Admin
 import { LoginAdminComponent } from '../pages/admin-pages/login-admin/login-admin.component';
 
+//change this with pages
 import { LoginUserComponent } from '../pages/user-pages/login-user/login-user.component';
 import { SignupUserComponent } from '../pages/user-pages/signup-user/signup-user.component';
 

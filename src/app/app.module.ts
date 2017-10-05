@@ -20,10 +20,18 @@ import { BuyerProfileComponent } from './components/buyer/buyer-profile/buyer-pr
 //Company Components
 import { CompanyProfileComponent } from './components/company/company-profile/company-profile.component';
 
+//Auth Components 
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { SigninComponent } from './components/auth/signin/signin.component';
+
 //Pages
 import { NavbarAdminComponent } from './pages/admin-pages/navbar-admin/navbar-admin.component';
+import { NavbarUserComponent } from './pages/user-pages/navbar-user/navbar-user.component';
+import { FooterUserComponent } from './pages/user-pages/footer-user/footer-user.component';
+
 import { LoginAdminComponent } from './pages/admin-pages/login-admin/login-admin.component';
 import { LoginUserComponent } from './pages/user-pages/login-user/login-user.component';
+import { SignupUserComponent } from './pages/user-pages/signup-user/signup-user.component';
 
 //Services
 import { AdminService } from './services/admin/admin.service';
@@ -36,9 +44,8 @@ import { RequireAuthService } from './routes/guards/require-auth.service';
 
 //Third parts module
 import { FileSelectDirective} from "ng2-file-upload";
-import { NavbarUserComponent } from './pages/user-pages/navbar-user/navbar-user.component';
-import { FooterUserComponent } from './pages/user-pages/footer-user/footer-user.component';
-import { SignupUserComponent } from './pages/user-pages/signup-user/signup-user.component';
+
+
 
 
 @NgModule({
@@ -55,7 +62,9 @@ import { SignupUserComponent } from './pages/user-pages/signup-user/signup-user.
     LoginUserComponent,
     NavbarUserComponent,
     FooterUserComponent,
-    SignupUserComponent
+    SignupUserComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [
     BrowserModule,
