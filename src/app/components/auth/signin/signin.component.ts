@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { User } from '../../../models/user.model';
 import { AuthService } from '../../../services/auth/auth.service';
@@ -16,10 +17,11 @@ export class SigninComponent implements OnInit {
   });
 
   error: string;
+  message: any;
  
 
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,10 +29,20 @@ export class SigninComponent implements OnInit {
   login() {
     this.error = null;
     this.auth.login(this.user).subscribe(
-      (user) => this.user = user,
+      (user) => {
+      	if(user.id){
+      		this.user = user,
+      		this.router.navigate(['/buyer/buyer-profile']);
+      	} else {this.message = user.message} 	
+      },
       (err) => this.error = err
     );
   }
 
 }
+
+
+
+
+
 

@@ -1,7 +1,20 @@
-<h1>Buyer Profile / </h1>
-
-<h2>Buyer Details</h2>
-<span>The Id of this buyer is: <strong>{{ buyer?._id }}</strong></span>
-<button>
-	<a [routerLink]="['/buyer/products']">My products list (favorite - cart)</a>
-</button>
+<div [ngClass]="{empty: loading, 'is-user': user, 'is-anon': anon}">
+  <div *ngIf="loading">
+    <span class="username text">Loading</span>
+  </div>
+  <div *ngIf="!loading && user">
+    <h1>Buyer Profile / </h1>
+		<h2>Buyer Details</h2>
+		<span>The Id of this buyer is: <strong>{{ buyer?._id }}</strong></span>
+		<button>
+			<a [routerLink]="['/buyer/products']">My products list (favorite - cart)</a>
+		</button>
+    <span class="username text">{{user.username}}</span>
+    <!-- <app-auth-logout></app-auth-logout> -->
+  </div>
+  <div *ngIf="!loading && anon">
+    <a (click)="toggleForms()">login or signup</a>
+    <app-signin *ngIf="formsVisible"></app-signin>
+    <app-signup *ngIf="formsVisible"></app-signup>
+  </div>
+</div>
