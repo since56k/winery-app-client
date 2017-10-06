@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth/auth.service';
 export class RequireAuthService  implements CanActivate {
 
 	user:any;
+  me:any;
 
 	constructor(
   	private authService: AuthService
@@ -13,15 +14,12 @@ export class RequireAuthService  implements CanActivate {
   
   canActivate() {
     this.user = this.authService.getUser();
-    if(this.user){
-    	console.log(this.user)
+    this.me = this.authService.me();
+    if(this.me){
+    	this.user = JSON.parse(localStorage.getItem('user'));
     	return true;
     } 
-    console.log('not logged')
     return false;
   }
 
 }
-
-
-

@@ -7,34 +7,33 @@ import { environment } from '../../../environments/environment';
 const apiUrl = environment.apiUrl + '/api';
 
 @Injectable()
-export class CompanyService {
+export class ProductsService {
   
   constructor(private http: Http) {}
 
-  getListCompany() {
-    return this.http.get(`${apiUrl}/companies`)
+  getListProduct() {
+    return this.http.get(`${apiUrl}/products`)
       .map((res) => res.json());
   }
   
-  getCompany(id) {
-    return this.http.get(`${apiUrl}/companies/${id}`)
+  getProduct(id) {
+    return this.http.get(`${apiUrl}/products/${id}`)
       .map((res) => res.json());
   }
 
-  newCompany(company) {
-    console.log('break')
-    return this.http.post(`${apiUrl}/companies/newcompany`, company)
-      .map((res) => res.json());
-
-  }
-  
-  editCompany(company) {
-    return this.http.put(`${apiUrl}/companies/${company.id}`, company)
+  newProduct(product) {
+  	console.log(product)
+    return this.http.post(`${apiUrl}/products/newproduct`, product)
       .map((res) => res.json());
   }
   
-  removeCompany(id) {
-    return this.http.delete(`${apiUrl}/companies/delete/${id}`)
+  editProduct(product) {
+    return this.http.put(`${apiUrl}/products/${product.id}`, product)
+      .map((res) => res.json());
+  }
+  
+  removeProduct(id) {
+    return this.http.delete(`${apiUrl}/products/delete/${id}`)
       .map((res) => res.json());
   }
 }

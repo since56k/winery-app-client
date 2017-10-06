@@ -33,7 +33,7 @@ export class BuyerComponent implements OnInit {
     role: ''
   };
 
-  feedback: string;
+
 	buyers: any;
   message: any;
 
@@ -48,11 +48,11 @@ export class BuyerComponent implements OnInit {
 
     //Upload Images
     this.uploader.onSuccessItem = (item, response) => {
-      this.feedback = JSON.parse(response).message;
+      this.message = JSON.parse(response).message;
     };
 
     this.uploader.onErrorItem = (item, response, status, headers) => {
-      this.feedback = JSON.parse(response).message;
+      this.message = JSON.parse(response).message;
     };
   }
 
@@ -72,8 +72,7 @@ export class BuyerComponent implements OnInit {
 
     this.uploader.uploadAll();
     
-     //show realtime NOT WORKS
-    this.getListBuyer();
+    setTimeout(()=>{this.getListBuyer();}, 500);
 
     
   }

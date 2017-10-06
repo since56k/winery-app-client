@@ -43,6 +43,8 @@
 //     });
 //   }
 
+-- Get crud products in companies 
+-- Add cart in buyer 
 
 -- refactoring
 -- 1 create area for admin and company 

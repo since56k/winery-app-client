@@ -10,7 +10,10 @@ import { LoginUserComponent } from '../pages/user-pages/login-user/login-user.co
 import { SignupUserComponent } from '../pages/user-pages/signup-user/signup-user.component';
 
 import { AdminComponent } from '../components/admin/admin/admin.component';
+
 import { BuyerComponent } from '../components/admin/buyer/buyer.component';
+import { CartComponent } from '../components/buyer/cart/cart.component'
+
 import { CompanyComponent } from '../components/admin/company/company.component';
 
 import { BuyerProfileComponent } from '../components/buyer/buyer-profile/buyer-profile.component';
@@ -18,9 +21,11 @@ import { CompanyProfileComponent } from '../components/company/company-profile/c
 
 import { RequireAuthService } from './guards/require-auth.service';
 
-//Playground
-import { CartComponent } from '../playground/shop/cart/cart.component';
-import { CartService } from '../playground/service/cart.service';
+//Products
+import { ProductListComponent } from '../components/product/product-list/product-list.component';
+import { ProductDetailsComponent } from '../components/product/product-details/product-details.component';
+
+
 
 
 
@@ -51,7 +56,7 @@ export const routes: Routes = [
   ] },
 
   // * Cart Routes * //
-  { path: 'cart', children: [
+  { path: 'buyer/cart', children: [
     { path: '', component: CartComponent },
     { path: ':id', component: CartComponent }
   ] },

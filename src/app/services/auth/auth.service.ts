@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -21,7 +22,7 @@ export class AuthService {
   // Observable string stream
   userChange$ = this.userChange.asObservable();
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, private router: Router) {}
 
   private setUser(user: User = null) {
     this.user = user;
@@ -39,6 +40,7 @@ export class AuthService {
       .map(res => {
         let user = new User(res.json());
         this.setUser(user);
+        localStorage.setItem('user', JSON.stringify(user));
         return user;
       });
   }
@@ -50,6 +52,7 @@ export class AuthService {
       .map(res => {
         let user = new User(res.json());
         this.setUser(user);
+        localStorage.setItem('user', JSON.stringify(user));
         return user;
       });
   }
@@ -60,6 +63,8 @@ export class AuthService {
     return this.http.post(apiUrl + '/logout', {}, options)
     .map(res => {
       this.setUser();
+      localStorage.removeItem('user');
+      console.log('logout')
       return null;
     });
   }
@@ -85,7 +90,19 @@ export class AuthService {
       this.me().subscribe();
     }
   }
+
+  //error handler with catch to link
+  // handleError(e) {
+  //   this.logout();
+  //   this.router.navigate(['/auth/signin']);
+  //   return Observable.throw(e.json().message);
+  // }
+
 }
+
+
+
+
 
 
 
