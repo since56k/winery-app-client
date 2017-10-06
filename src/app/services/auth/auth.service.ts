@@ -15,6 +15,7 @@ const apiUrl = environment.apiUrl + '/auth';
 @Injectable()
 export class AuthService {
 
+  public isAuthenticated = false;
   private initialized: boolean;
   private user: User | null;
   private userChange: Subject<User | null> = new Subject();
@@ -79,9 +80,10 @@ export class AuthService {
         return user;
       }, (err) => {
         if(err.status=== 404) {
+          console.log(err.status)
           this.setUser();
         }
-      });
+      })
   }
 
   initialize() {
@@ -91,12 +93,7 @@ export class AuthService {
     }
   }
 
-  //error handler with catch to link
-  // handleError(e) {
-  //   this.logout();
-  //   this.router.navigate(['/auth/signin']);
-  //   return Observable.throw(e.json().message);
-  // }
+
 
 }
 

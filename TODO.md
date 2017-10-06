@@ -43,7 +43,7 @@
 //     });
 //   }
 
--- Get crud products in companies 
+-- Get Upgrade everywhere
 -- Add cart in buyer 
 
 -- refactoring
