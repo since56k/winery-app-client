@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { Item } from '../../../services/buyer/item';
 import { ItemService } from '../../../services/buyer/item.service';
+import { BuyerService } from '../../../services/buyer/buyer.service';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'cart-app',
@@ -9,24 +13,46 @@ import { ItemService } from '../../../services/buyer/item.service';
 })
 export class CartComponent implements OnInit { 
 
-   cartItems: Item[] = [];
+   cartItems: any;
+   user: any;
+   subscriptions: any;
+   errorMessage: any;
 
    @Input() buyer: any
 
 
-   constructor(private itemService: ItemService) { }
+   constructor(
+     private itemService: ItemService, 
+     private authService: AuthService, 
+     private buyerService: BuyerService,
+     private route: ActivatedRoute,
+     ) 
+   { }
 
-   ngOnInit(): void {
-        this.getItemsForCart();
+   ngOnInit() {
+        this.route.params.subscribe(params => {
+        this.getItemsForCart(params['id']);
+       })
+
    }
 
-   getItemsForCart(): void {
-        this.cartItems = this.itemService.getSelectedItems();
-		console.log(this.cartItems);
-   } 
+
+   getItemsForCart(id) {
+      this.itemService.getSelectedItems(id).subscribe(
+        res => {
+        this.cartItems = res; 
+        console.log(this.cartItems)
+      },
+        error => {
+            console.log('error to upload buyer');
+      });
+   }
+
    
-   removeItemFromCart(id:number): void {
-        this.itemService.removeItem(id);
-   }
+   // removeItemFromCart(id:number) {
+   //      this.itemService.removeItem(id);
+   // }
+
+  
 }
     

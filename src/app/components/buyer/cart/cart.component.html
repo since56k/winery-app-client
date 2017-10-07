@@ -1,4 +1,4 @@
-<div [ngClass]="'rightPanel'">
+
   <h3>{{buyer?.username}} Cart</h3>
   <ul *ngFor="let item of cartItems">
 	<li>
@@ -6,7 +6,7 @@
 	  <span><button type="button" (click)="removeItemFromCart(item._id)">Remove</button></span>
 	</li>
   </ul>
-</div>
+
 
 
   

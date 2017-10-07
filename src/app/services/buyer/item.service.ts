@@ -16,45 +16,39 @@ export class ItemService {
   selectedItems: Item[] = [];
 	errorMessage: string;
 
-	//url = "http://localhost:4200/assets/data/products.json";
 
 
-	constructor(private http:Http) { 
-	   this.observableItems = this.http.get(`${apiUrl}/products`)
-	   .map((res: Response) => res.json());
-	   		this.observableItems.subscribe(
-	      	data => this.allItems = data,
-					error =>  this.errorMessage = <any>error);
+	constructor(private http:Http) 
+	{}
+
+
+	getItems() {
+	   return this.http.get(`${apiUrl}/products`)
+	   		.map((res) => res.json());
 	}
 
-	getItems(): Observable<Item[]> {
-	   return this.observableItems;
-	}
-
-	getSelectedItems(): Item[] {
-	   return this.selectedItems;
+	getSelectedItems(userId) {
+		console.log(userId)
+			return this.http.get(`${apiUrl}/buyers/cart/${userId}`)
+      .map((res) => res.json());
+	   // return this.selectedItems;
 	}	
 
-		//  return this.http.put(`${apiUrl}/buyers/update/${buyer.id}`, buyer)
-  //     .map((res) => res.json());
-  // }
-
-	addItem(idItem, userId) {
-  	console.log('find', idItem, userId)
-  				let item = this.allItems.find(ob => ob._id === idItem);
+	addItem(item, userId) {
        		 return this.http.put(`${apiUrl}/buyers/add/${userId}`, item  )
 			 		 	.map((res) => res.json());
 
+			 		 	//	let item = this.allItems.find(ob => ob._id === idItem);
     //    if (this.selectedItems.indexOf(item) < 0) {	   
 	   //    this.selectedItems.push(item);
 
 	   // }
   }
 
-  removeItem(id:number): void {
-	  let item = this.selectedItems.find(ob => ob._id === id);
-	  let itemIndex = this.selectedItems.indexOf(item);
-       this.selectedItems.splice(itemIndex, 1);
-  }
+  // removeItem(id:number): void {
+	 //  let item = this.selectedItems.find(ob => ob._id === id);
+	 //  let itemIndex = this.selectedItems.indexOf(item);
+  //      this.selectedItems.splice(itemIndex, 1);
+  // }
 
 }

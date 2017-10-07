@@ -34,14 +34,12 @@ export class StoreComponent implements OnInit, OnDestroy {
     { }
 
 
-   ngOnInit(): void {
+   ngOnInit() {
         this.getStoreItems();
 
         this.user = this.authService.getUser();
           let subscription = this.authService.userChange$.subscribe((user) => {
           this.user = user;
-          console.log('user', this.user.id)
-
           this.subscriptions.push(subscription);
       });
 
@@ -49,13 +47,13 @@ export class StoreComponent implements OnInit, OnDestroy {
 
    getStoreItems() {
       this.itemService.getItems().subscribe(
-              data => this.storeItems = data,
+          data => this.storeItems = data,
           error =>  this.errorMessage = <any>error);
    }
 
 
-   addItemInCart(id) {
-	    this.itemService.addItem(id, this.user.id).subscribe(
+   addItemInCart(item) {
+	    this.itemService.addItem(item, this.user.id).subscribe(
         res => {
         this.message = res.message; 
         console.log('update cart')
