@@ -15,21 +15,24 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class BuyerProfileComponent implements OnInit, OnDestroy {
 
+
+
   public roles = [
     { value: 'Buyer', display: 'Buyer' },
     { value: 'Company', display: 'Company' },
     { value: 'Guest', display: 'Guest' }
   ];
 
+
   subscriptions = [];
 
   updateBuyer = []
 
-	buyer: any;
-
   user: User;
 
   message: any;
+
+  buyer: any;
 
 
   constructor(

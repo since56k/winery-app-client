@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Item } from '../../../services/buyer/item';
 import { ItemService } from '../../../services/buyer/item.service';
@@ -9,6 +9,8 @@ import { ItemService } from '../../../services/buyer/item.service';
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit { 
+
+   @Input() buyer: any
 
 
    storeItems: Item[] = [];

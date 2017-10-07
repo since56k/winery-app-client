@@ -35,6 +35,14 @@ export class ItemService {
 	   return this.selectedItems;
 	}	
 
+		// has api
+	// addToCart(cartItem, userId) {
+	// 	console.log(cartItem, userId);
+	// 		 return this.http.put(`${apiUrl}/buyers/add`, {cartItem, userId} )
+	// 		 		 .map((res) => res.json());
+	// }
+
+
   addItem(id:number): void {
   	console.log('find', this.allItems)
        let item = this.allItems.find(ob => ob._id === id);
