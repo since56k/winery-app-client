@@ -1,7 +1,5 @@
-
-
 <div [ngClass]="'rightPanel'">
-  <h3>Cart</h3>
+  <h3>{{buyer?.username}} Cart</h3>
   <ul *ngFor="let item of cartItems">
 	<li>
 	  <span> {{item?.name}} </span> 
@@ -10,5 +8,5 @@
   </ul>
 </div>
 
-<span>Buyer {{buyer.username}}</span>
+
   

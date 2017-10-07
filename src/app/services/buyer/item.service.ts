@@ -35,21 +35,20 @@ export class ItemService {
 	   return this.selectedItems;
 	}	
 
-		// has api
-	// addToCart(cartItem, userId) {
-	// 	console.log(cartItem, userId);
-	// 		 return this.http.put(`${apiUrl}/buyers/add`, {cartItem, userId} )
-	// 		 		 .map((res) => res.json());
-	// }
+		//  return this.http.put(`${apiUrl}/buyers/update/${buyer.id}`, buyer)
+  //     .map((res) => res.json());
+  // }
 
+	addItem(idItem, userId) {
+  	console.log('find', idItem, userId)
+  				let item = this.allItems.find(ob => ob._id === idItem);
+       		 return this.http.put(`${apiUrl}/buyers/add/${userId}`, item  )
+			 		 	.map((res) => res.json());
 
-  addItem(id:number): void {
-  	console.log('find', this.allItems)
-       let item = this.allItems.find(ob => ob._id === id);
-       if (this.selectedItems.indexOf(item) < 0) {	   
-	      this.selectedItems.push(item);
+    //    if (this.selectedItems.indexOf(item) < 0) {	   
+	   //    this.selectedItems.push(item);
 
-	   }
+	   // }
   }
 
   removeItem(id:number): void {

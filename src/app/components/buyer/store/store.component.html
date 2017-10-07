@@ -1,5 +1,6 @@
 <div [ngClass]="'leftPanel'">
    <h3>Store</h3>
+   <span>{{message}}</span>
 	<div [ngClass]="'storeBox'" *ngFor="let item of storeItems" >
 	  <div>
 		<div >
@@ -8,7 +9,7 @@
 		  <p>Organic: {{item?.organic}}</p>
 		</div>
 		<div>
-		  <button type="button" (click)="addItemInCart(item?._id)">Add to Cart</button>
+		  <button type="submit" (click)="addItemInCart(item?._id)">Add to Cart</button>
 		</div>
 	  </div>
 	</div>
