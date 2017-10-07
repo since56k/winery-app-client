@@ -22,19 +22,26 @@ export class CartService {
 
   ) { }
 
+  //Has api
 	getCart(id) {
+		console.log('api', id)
 	  return this.http.get(`${apiUrl}/buyers/cart/${id}`)
 	      .map((res) => res.json());
+	}
+
+	// has api
+	addToCart(cartItem, userId) {
+		console.log(cartItem, userId);
+			 return this.http.put(`${apiUrl}/buyers/add`, {cartItem, userId} )
+			 		.subscribe((res) => {
+              this.incrementCounter();
+              this.sendCartChanged();
+            });
 	}
 
 	getUserOrders(id){
 	    return this.http.get(`${apiUrl}/buyers/orders/${id}`)
 	      .map((res) => res.json());
-	}
-
-	addToCart(cartItem, userId) {
-			 return this.http.put(`${apiUrl}/buyers/addToCart`, {cartItem, userId} )
-	         .map((res) => res.json())
 	}
 
 	sendCartChanged() {

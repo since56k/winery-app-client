@@ -29,6 +29,7 @@ export class SigninComponent implements OnInit {
     this.auth.login(this.user).subscribe(
       (user) => {
       	if(user.id){
+          //we have to check the role for redirection in buyer or company
       		this.user = user,
       		this.router.navigate(['/buyer/buyer-profile/' + this.user.id]);
       	} else {this.message = user.message} 	

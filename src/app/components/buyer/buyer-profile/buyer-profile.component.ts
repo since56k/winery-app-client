@@ -15,20 +15,30 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class BuyerProfileComponent implements OnInit, OnDestroy {
 
+  public roles = [
+    { value: 'Buyer', display: 'Buyer' },
+    { value: 'Company', display: 'Company' },
+    { value: 'Guest', display: 'Guest' }
+  ];
+
   subscriptions = [];
+
+  updateBuyer = []
 
 	buyer: any;
 
   user: User;
+
+  message: any;
+
 
   constructor(
   	private route: ActivatedRoute,
   	private buyerService: BuyerService,
     private authService: AuthService,
     private router: Router
-  ) {
-    console.log("so that i can break point");
-  }
+  ) {}
+    
 
 
   ngOnInit() {
@@ -55,6 +65,22 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
        })
     }   
   }
+
+  handleUpdateBuyer(form) {
+    const editBuyer = { id: this.user.id, username: form.value.username, email: form.value.email, role: form.value.role };
+      this.buyerService.editBuyer(editBuyer)
+      .subscribe(
+        res => {
+        this.message = res.message; 
+        this.getBuyer(this.user.id)
+      },
+        error => {
+            console.log('error to upload buyer');
+      });
+   
+    //this.router.navigate(['buyer/buyer-profile/'+this.user.id]);
+  }
+
 
   ngOnDestroy() {
     this.subscriptions.forEach((subscription) => subscription.unsubscribe());

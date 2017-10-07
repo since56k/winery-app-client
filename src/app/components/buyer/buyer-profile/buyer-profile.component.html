@@ -7,15 +7,36 @@
 		<h2>Buyer Details</h2>
 		<span>The Id of this buyer is: <strong>{{ buyer?._id }}</strong></span>
 		<button>
-			<a [routerLink]="['/buyer/products']">My products list (favorite - cart)</a>
+      <a [routerLink]="['/buyer/products']">My products list (favorite - cart)</a>
 		</button>
-    <span class="username text">{{user}}</span>
+    <button>
+      <a [routerLink]="['/buyer/cart']">Cart</a>
+    </button>
+    <span class="username text"></span>
     <!-- <app-auth-logout></app-auth-logout> -->
     <button (click)="logout()">logout</button>
   </div>
 </div>
-
 <span>
-  {{user}}
+  {{buyer.username}}
 </span>
+<span>
+  {{buyer.email}}
+</span>
+
+<h2>Update Profile</h2>
+<form (ngSubmit)="handleUpdateBuyer(companyForm)" #companyForm="ngForm" >
+  <label>name</label>
+  <input type="text" name="username" [(ngModel)]="username">
+  <label>email</label>
+  <input type="text" name="email" [(ngModel)]="email">
+  <label>role</label>
+  <select name="role" [(ngModel)]="role">
+      <option *ngFor="let role of roles" [value]="role.value">  
+        {{role.display}}
+      </option>
+  </select>
+  <button type="submit">Add</button>
+  {{message}}
+</form>
 

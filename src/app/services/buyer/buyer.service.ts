@@ -27,7 +27,8 @@ export class BuyerService {
   }
   
   editBuyer(buyer) {
-    return this.http.put(`${apiUrl}/buyers/${buyer.id}`, buyer)
+    console.log('edit', buyer)
+    return this.http.put(`${apiUrl}/buyers/update/${buyer.id}`, buyer)
       .map((res) => res.json());
   }
 

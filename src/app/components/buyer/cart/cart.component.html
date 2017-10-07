@@ -1,1 +1,17 @@
-<h1>Cart</h1>
+<div>
+  <div *ngIf="loading">
+    <span class="username text">Loading</span>
+  </div>
+  <div *ngIf="!loading && user">
+    <h1>Buyer Profile / </h1>
+		<h2>Buyer Details</h2>
+		<span>The Id of this buyer is: <strong>{{ user?.id }}</strong></span>
+    <span class="username text">{{user.username}}</span>
+    <!-- <app-auth-logout></app-auth-logout> -->
+    <button class="btn btn-default" (click)="addToCart()">Add to Cart</button>
+    <button (click)="logout()">logout</button>
+  </div>
+</div>
+
+
+
