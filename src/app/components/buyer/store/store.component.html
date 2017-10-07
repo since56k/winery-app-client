@@ -1,0 +1,15 @@
+<div [ngClass]="'leftPanel'">
+   <h3>Store</h3>
+	<div [ngClass]="'storeBox'" *ngFor="let item of storeItems" >
+	  <div>
+		<div >
+		  <h4><a href="#">{{item.name}}</a></h4>
+		  <h4 >Price:{{item.price}}</h4>
+		  <p>{{item.description}}</p>
+		</div>
+		<div>
+		  <button type="button" (click)="addItemInCart(item.id)">Add to Cart</button>
+		</div>
+	  </div>
+	</div>
+</div>

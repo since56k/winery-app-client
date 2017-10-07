@@ -17,8 +17,9 @@ import { CompanyComponent } from './components/admin/company/company.component'
 //Buyer Components
 import { BuyerProfileComponent } from './components/buyer/buyer-profile/buyer-profile.component';
 
-//Buyer Cart
+//Buyer Cart and Store
 import { CartComponent } from './components/buyer/cart/cart.component';
+import { StoreComponent } from './components/buyer/store/store.component';
 
 //Company Components
 import { CompanyProfileComponent } from './components/company/company-profile/company-profile.component';
@@ -45,6 +46,7 @@ import { BuyerService } from './services/buyer/buyer.service';
 import { CartService } from './services/buyer/cart.service';
 import { CompanyService } from './services/company/company.service';
 import { ProductsService } from './services/product/products.service';
+import { ItemService } from './services/buyer/item.service';
 
 //Auth services
 import { AuthService } from './services/auth/auth.service';
@@ -72,6 +74,7 @@ import { FileSelectDirective} from "ng2-file-upload";
     SignupComponent,
     SigninComponent,
     CartComponent,
+    StoreComponent,
     ProductListComponent,
     ProductDetailsComponent
   ],
@@ -89,7 +92,8 @@ import { FileSelectDirective} from "ng2-file-upload";
     RequireAuthService,
     AuthService,
     CartService,
-    ProductsService
+    ProductsService,
+    ItemService
   ],
   
   bootstrap: [AppComponent]

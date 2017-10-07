@@ -78,7 +78,6 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
             console.log('error to upload buyer');
       });
    
-    //this.router.navigate(['buyer/buyer-profile/'+this.user.id]);
   }
 
 

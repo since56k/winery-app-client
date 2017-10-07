@@ -33,10 +33,7 @@ export class CartService {
 	addToCart(cartItem, userId) {
 		console.log(cartItem, userId);
 			 return this.http.put(`${apiUrl}/buyers/add`, {cartItem, userId} )
-			 		.subscribe((res) => {
-              this.incrementCounter();
-              this.sendCartChanged();
-            });
+			 		 .map((res) => res.json());
 	}
 
 	getUserOrders(id){
