@@ -19,15 +19,14 @@ export class StoreComponent implements OnInit {
    constructor(private itemService: ItemService) { }
 
 
-   getStoreItems(): void {
-	    this.itemService.getItems().subscribe(
-		          data => this.storeItems = data,
-				  error =>  this.errorMessage = <any>error);
-   }
-
-
    ngOnInit(): void {
         this.getStoreItems();
+   }
+
+   getStoreItems(): void {
+      this.itemService.getItems().subscribe(
+              data => this.storeItems = data,
+          error =>  this.errorMessage = <any>error);
    }
 
 

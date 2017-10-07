@@ -18,10 +18,10 @@
   </div>
 </div>
 <span>
-  {{buyer.username}}
+  {{buyer?.username}}
 </span>
 <span>
-  {{buyer.email}}
+  {{buyer?.email}}
 </span>
 
 <h2>Update Profile</h2>
@@ -39,4 +39,8 @@
   <button type="submit">Add</button>
   {{message}}
 </form>
+
+<h2>Cart</h2>
+<store-app></store-app>
+<cart-app></cart-app>
 
