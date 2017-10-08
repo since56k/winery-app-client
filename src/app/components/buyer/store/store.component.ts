@@ -56,7 +56,7 @@ export class StoreComponent implements OnInit, OnDestroy {
 
    addItemInCart(item) {
      //*OBSERVABLE*//
-     this.itemService.newEvent('clicked!');
+     //this.itemService.newEvent('clicked!');
 
 	    this.itemService.addItem(item, this.user.id).subscribe(
         res => {

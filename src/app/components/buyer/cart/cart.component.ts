@@ -16,8 +16,8 @@ export class CartComponent implements OnInit {
    cartItems: any;
    user: any;
    subscriptions: any;
-   errorMessage: any;
-
+   error: any;
+   data: any;
    message: any;
 
    @Input() buyer: any
@@ -33,29 +33,38 @@ export class CartComponent implements OnInit {
 
    ngOnInit() {
         this.route.params.subscribe(params => {
-        this.getItemsForCart(params['id']);
+        this.user = params['id'];
+        this.getItemsForCart(this.user);
+        
        })
 
         //*OBSERVABLE*//
-       this.itemService.events$.forEach(event => console.log(event));
+       //this.itemService.events$.forEach(event => console.log(event));
 
    }
 
    getItemsForCart(id) {
       this.itemService.getSelectedItems(id).subscribe(
         res => {
-        this.cartItems = res.cartItems; 
-        console.log('CART ITEMS', this.cartItems)
+          this.cartItems = res.cartItems; 
+          console.log('CART ITEMS', this.cartItems)
       },
         error => {
-            console.log('error to upload buyer');
+            console.log('error to upload in cart');
       });
    }
 
    
-   // removeItemFromCart(id:number) {
-   //      this.itemService.removeItem(id);
-   // }
+   removeItemFromCart(itemId) {
+      this.itemService.removeItem(itemId, this.user).subscribe(
+        res => {
+          this.data = res; 
+        console.log('Delete item in cart', this.data)
+      },
+        error => {
+            console.log('error to delete item');
+      });
+   }
 
   
 }
