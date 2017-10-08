@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Item } from './item';
+import { Subject } from 'rxjs/Subject';
 
 import { environment } from '../../../environments/environment';
 
@@ -17,10 +18,21 @@ export class ItemService {
 	errorMessage: string;
 
 
+  private _subject = new Subject<any>();
+
 
 	constructor(private http:Http) 
 	{}
 
+	//OBSERVABLE FOR UPDATE CART
+	newEvent(event) {
+    this._subject.next(event);
+  }
+
+  get events$ () {
+    return this._subject.asObservable();
+  }
+  //**//
 
 	getItems() {
 	   return this.http.get(`${apiUrl}/products`)

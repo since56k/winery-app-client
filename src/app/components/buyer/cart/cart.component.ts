@@ -18,6 +18,8 @@ export class CartComponent implements OnInit {
    subscriptions: any;
    errorMessage: any;
 
+   message: any;
+
    @Input() buyer: any
 
 
@@ -34,8 +36,10 @@ export class CartComponent implements OnInit {
         this.getItemsForCart(params['id']);
        })
 
-   }
+        //*OBSERVABLE*//
+       this.itemService.events$.forEach(event => console.log(event));
 
+   }
 
    getItemsForCart(id) {
       this.itemService.getSelectedItems(id).subscribe(
