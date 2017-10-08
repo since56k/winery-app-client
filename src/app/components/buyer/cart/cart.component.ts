@@ -40,8 +40,8 @@ export class CartComponent implements OnInit {
    getItemsForCart(id) {
       this.itemService.getSelectedItems(id).subscribe(
         res => {
-        this.cartItems = res; 
-        console.log(this.cartItems)
+        this.cartItems = res.cartItems; 
+        console.log('CART ITEMS', this.cartItems)
       },
         error => {
             console.log('error to upload buyer');

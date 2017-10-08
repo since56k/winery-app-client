@@ -59,7 +59,7 @@ export class StoreComponent implements OnInit, OnDestroy {
         console.log('update cart')
       },
         error => {
-            console.log('error to upload buyer');
+            console.log('error to upload cart');
       });
    }
 

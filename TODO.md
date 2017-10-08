@@ -49,9 +49,9 @@
 -- refactoring
 -- 1 create area for admin and company 
 -- 2 signin / up with role verification 
--- 3 update backend and update info frontend
--- 4 display all products and company in buyer
--- 5 display own company products in company
+-- 3 display all products and company in buyer
+-- 4 display own company products in company
+-- 5 update backend and update info frontend
 -- 6 cart buyer
 
 -- Google Maps and save it in database

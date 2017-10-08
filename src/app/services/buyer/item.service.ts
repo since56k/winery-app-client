@@ -35,6 +35,7 @@ export class ItemService {
 	}	
 
 	addItem(item, userId) {
+		console.log(item)
        		 return this.http.put(`${apiUrl}/buyers/add/${userId}`, item  )
 			 		 	.map((res) => res.json());
 
