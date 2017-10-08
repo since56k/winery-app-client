@@ -26,7 +26,7 @@ export class SignupComponent {
      this.session.signup(this.user).subscribe(
        (data) => {
           if(data.id){
-          	this.router.navigate(['/buyer/buyer-profile']);
+          	this.router.navigate(['/buyer/buyer-profile/' + this.user.id]);
           } else {this.message = data.message}
         },
         (err) => {

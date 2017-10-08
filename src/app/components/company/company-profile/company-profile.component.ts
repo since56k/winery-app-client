@@ -54,7 +54,7 @@ export class CompanyProfileComponent implements OnInit {
   	// this.route.params.subscribe(params => {
    //  this.getCompany(params['id']);
  		// })
-
+  
     this.getListProduct();
 
     //Upload Images

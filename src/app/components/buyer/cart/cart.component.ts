@@ -32,12 +32,12 @@ export class CartComponent implements OnInit {
    { }
 
    ngOnInit() {
+
         this.route.params.subscribe(params => {
-        this.user = params['id'];
-        this.getItemsForCart(this.user);
-        
+        this.user = params['id'];        
        })
 
+        this.getItemsForCart(this.user);        
         //*OBSERVABLE*//
        //this.itemService.events$.forEach(event => console.log(event));
 
@@ -56,10 +56,12 @@ export class CartComponent implements OnInit {
 
    
    removeItemFromCart(itemId) {
+      //if (window.confirm('Are you sure?'))
       this.itemService.removeItem(itemId, this.user).subscribe(
         res => {
-          this.data = res; 
-        console.log('Delete item in cart', this.data)
+          this.message = res.message; 
+          this.getItemsForCart(this.user);
+        console.log('Delete item in cart', this.message)
       },
         error => {
             console.log('error to delete item');

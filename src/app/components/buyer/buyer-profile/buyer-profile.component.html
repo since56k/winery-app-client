@@ -1,9 +1,11 @@
 <div>
-  <div *ngIf="loading">
-    <span class="username text">Loading</span>
-  </div>
-  <div *ngIf="!loading && user">
     <h1>Buyer Profile / </h1>
+  <div *ngIf="loading">
+    <span class="username text">Not autorized</span>
+  </div>
+
+  <div *ngIf="!loading && user">
+
 		<h2>Buyer Details</h2>
 		<span>The Id of this buyer is: <strong>{{ buyer?._id }}</strong></span>
 		<button>
@@ -23,26 +25,26 @@
 <span>
   {{buyer?.email}}
 </span>
+<div *ngIf="!loading && user">
+  <h2>Update Profile</h2>
+  <form (ngSubmit)="handleUpdateBuyer(companyForm)" #companyForm="ngForm" >
+    <label>name</label>
+    <input type="text" name="username" [(ngModel)]="username">
+    <label>email</label>
+    <input type="text" name="email" [(ngModel)]="email">
+    <label>role</label>
+    <select name="role" [(ngModel)]="role">
+        <option *ngFor="let role of roles" [value]="role.value">  
+          {{role.display}}
+        </option>
+    </select>
+    <button type="submit">Add</button>
+    {{message}}
+  </form>
 
-<h2>Update Profile</h2>
-<form (ngSubmit)="handleUpdateBuyer(companyForm)" #companyForm="ngForm" >
-  <label>name</label>
-  <input type="text" name="username" [(ngModel)]="username">
-  <label>email</label>
-  <input type="text" name="email" [(ngModel)]="email">
-  <label>role</label>
-  <select name="role" [(ngModel)]="role">
-      <option *ngFor="let role of roles" [value]="role.value">  
-        {{role.display}}
-      </option>
-  </select>
-  <button type="submit">Add</button>
-  {{message}}
-</form>
 
 
-
-<h2>Ecommerce</h2>
-<store-app [buyer]="buyer"></store-app>
-<cart-app [buyer]="buyer"></cart-app>
-
+  <h2>Ecommerce</h2>
+  <store-app [buyer]="buyer"></store-app>
+  <cart-app [buyer]="buyer"></cart-app>
+</div>

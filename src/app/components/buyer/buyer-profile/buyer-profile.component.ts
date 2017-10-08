@@ -32,6 +32,8 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
 
   message: any;
 
+  loading: string;
+
   buyer: any;
 
 
@@ -92,6 +94,7 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
     this.authService.logout().subscribe();
       this.router.navigate(['/']);
   }
+
 }
 
 
