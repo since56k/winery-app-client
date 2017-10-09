@@ -20,13 +20,11 @@ export class StoreComponent implements OnInit, OnDestroy {
 
   storeItems: Item[] = [];
 
-  errorMessage: string;
-
   subscriptions = [];
 
   user: User;
 
-  message: any;
+  message: string;
 
    constructor(
     private itemService: ItemService,
@@ -49,7 +47,7 @@ export class StoreComponent implements OnInit, OnDestroy {
    getStoreItems() {
       this.itemService.getItems().subscribe(
           data => this.storeItems = data,
-          error =>  this.errorMessage = <any>error);
+          error =>  this.message = <any>error);
    }
 
 

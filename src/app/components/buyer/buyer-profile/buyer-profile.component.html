@@ -1,10 +1,10 @@
 <div>
-    <h1>Buyer Profile / Name: {{buyer?.username}}</h1>
-  <div *ngIf="loading">
-    <span class="username text">Not autorized</span>
+
+  <div *ngIf="auth">
+      <h1>Buyer Profile / Name: {{buyer?.username}}</h1>
   </div>
 
-  <div *ngIf="!loading && user">
+  <div *ngIf="!auth && user">
 
 		<h2>Buyer Details</h2>
 		<span>The Id of this buyer is: <strong>{{ buyer?._id }}</strong></span>
@@ -25,7 +25,7 @@
 <span>
   {{buyer?.email}}
 </span>
-<div *ngIf="!loading && user">
+<div *ngIf="!auth && user">
   <h2>Update Profile</h2>
   <form (ngSubmit)="handleUpdateBuyer(companyForm)" #companyForm="ngForm" >
     <label>name</label>
@@ -45,5 +45,20 @@
   <h2>Ecommerce</h2>
   <store-app [buyer]="buyer"></store-app>
   <cart-app [buyer]="buyer"></cart-app>
+  <br>
+
+  <h2>Companis</h2>
+  <ul>
+    <li *ngFor="let company of companies">
+          name: {{ company.username }} <br>
+          email: {{ company.email }} <br>
+          role: {{company.role}}<br>
+        
+        <button>
+            <a [routerLink]="['/company/company-profile', company._id]">View Details Company</a>
+        </button>
+        <button type="submit" (click)="deleteCompany(company._id)">Delete</button>
+    </li>
+</ul>
 </div>
 <a [routerLink]="['']"> Back to list </a>

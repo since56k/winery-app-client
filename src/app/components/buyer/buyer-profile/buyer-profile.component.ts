@@ -6,6 +6,7 @@ import { User } from '../../../models/user.model';
 //Services
 import { BuyerService } from '../../../services/buyer/buyer.service';
 import { AuthService } from '../../../services/auth/auth.service';
+import { CompanyService } from '../../../services/company/company.service';
 
 @Component({
   selector: 'app-buyer-profile',
@@ -35,9 +36,14 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
 
   buyer: any;
 
+  companies: any;
+
+  auth: boolean = true;
+
 
   constructor(
-  	private buyerService: BuyerService,
+    private buyerService: BuyerService,
+  	private companyService: CompanyService,
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router
@@ -46,17 +52,20 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-      //get user from sigin
-      this.user = this.authService.getUser();
-        let subscription = this.authService.userChange$.subscribe((user) => {
-        this.user = user;
-      });
-      this.subscriptions.push(subscription);
+     
+    this.auth = false;
 
-      //call get buyer if i get param from route
-      this.route.params.subscribe(params => {
-        this.getBuyer(params['id']);
- 		  })
+    this.user = this.authService.getUser();
+      let subscription = this.authService.userChange$.subscribe((user) => {
+      this.user = user;
+    });
+    this.subscriptions.push(subscription);
+
+    this.route.params.subscribe(params => {
+      this.getBuyer(params['id']);
+ 		})
+
+    this.getListCompany();
 	}
 
   getBuyer(id) {
@@ -67,6 +76,14 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
         this.buyer = buyer;
        })
     }   
+  }
+
+  getListCompany(){
+    this.companyService.getListCompany()
+    .subscribe((company) => {
+      this.companies = company;
+      console.log(this.companies);
+    });
   }
 
   handleUpdateBuyer(form) {

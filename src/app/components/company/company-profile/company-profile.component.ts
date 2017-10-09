@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute }    from "@angular/router";
 
+import { environment } from '../../../../environments/environment';
+
 //Services
 import { CompanyService } from '../../../services/company/company.service';
 import { ProductsService } from '../../../services/product/products.service';
@@ -14,6 +16,8 @@ import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
 //URL = '/api/';
 const URL = 'http://localhost:3000/api/products/newproduct';
+
+const apiUrl = environment.apiUrl;
 
 
 @Component({
@@ -49,6 +53,7 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
 	company: any;
   products: any;
   message: any;
+  auth: boolean = true;
 
 
   constructor(
@@ -60,14 +65,15 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
   	) { }
 
   ngOnInit() {
-    //get user
+     
+    this.auth = false;
+
     this.user = this.authService.getUser();
       let subscription = this.authService.userChange$.subscribe((user) => {
       this.user = user;
     });
-    this.subscriptions.push(subscription);
 
-    
+    this.subscriptions.push(subscription);  
 
     //call get buyer if i get param from route
     this.route.params.subscribe(params => {
@@ -75,7 +81,6 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
       this.getProductByCompany(params['id']);
     })
 
-    //Upload Images
     this.uploader.onSuccessItem = (item, response) => {
       this.message = JSON.parse(response).message;
     };
@@ -89,30 +94,32 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
     this.companyService.getCompany(id)
       .subscribe((company) => {
         this.company = company;
-       })
+     })
   }
 
   getProductByCompany(id){
     this.productsService.getProductByCompany(id)
     .subscribe((product) => {
       this.products = product;
-      console.log(this.products)
     });
   }
 
   submit() {
-    this.uploader.onBuildItemForm = (item, form) => {
-      form.append('userId', this.user.id)
-      form.append('name', this.newProduct.name);
-      form.append('category', this.newProduct.category);
-      form.append('type', this.newProduct.type);
-    };
-
-    this.uploader.uploadAll();
+    //const files = this.uploader.getNotUploadedItems();
     
-    setTimeout(()=>{this.getProductByCompany(this.user.id)}, 500);
-  }
+      this.uploader.onBuildItemForm = (item, form) => {
+        form.append('userId', this.user.id)
+        form.append('name', this.newProduct.name);
+        form.append('category', this.newProduct.category);
+        form.append('type', this.newProduct.type);
+      };
 
+      this.uploader.uploadAll();
+
+      setTimeout(()=>{this.getProductByCompany(this.user.id)}, 500);
+
+    }
+   
   deleteProduct(productId) {
   if (window.confirm('Are you sure?')) {
     this.productsService.removeProduct(productId)

@@ -1,5 +1,8 @@
+
+<div *ngIf="auth">
 <h1>Company Profile / Name: {{company?.username}}</h1>
-<div *ngIf="!loading && user">
+</div>
+<div *ngIf="!auth && user">
 <h2>Company Details</h2>
 <span>The Id of this company is: <strong>{{ company?._id }}</strong></span>
 
@@ -39,7 +42,7 @@
 
 <button (click)="logout()">logout</button>
 </div>
-<div *ngIf="!loading && user">
+<div *ngIf="!auth && user">
 <span>{{message}}</span>
 <br>
 <h3>Product List</h3>

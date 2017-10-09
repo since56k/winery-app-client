@@ -19,6 +19,7 @@ export class CartComponent implements OnInit {
    error: any;
    data: any;
    message: any;
+   amount: number;
 
    @Input() buyer: any
 
@@ -46,8 +47,9 @@ export class CartComponent implements OnInit {
    getItemsForCart(id) {
       this.itemService.getSelectedItems(id).subscribe(
         res => {
+          this.amount = res.amount; 
           this.cartItems = res.cartItems; 
-          console.log('CART ITEMS', this.cartItems)
+          console.log('CART ITEMS', this.cartItems, this.amount)
       },
         error => {
             console.log('error to upload in cart');

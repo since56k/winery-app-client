@@ -16,21 +16,14 @@ export class RequireAuthService  implements CanActivate {
   ) {}
   
   canActivate(): boolean {
-    this.user = this.authService.getUser();
-    this.me = this.authService.me();
-    if(this.me){
-      console.log(this.me)
-      this.user = JSON.parse(localStorage.getItem('user'));
-      console.log(this.user)
-      return true;
-    } else {
-    this.router.navigate(['/auth/signin']);
-    console.log('logout')
-    return false;
-    }
-
-   
-
+      this.me = this.authService.me();
+      if(this.me){
+        return true;
+      } else {
+        this.router.navigate(['/auth/signin']);
+        console.log('logout')
+        return false;
+      }
   }
     
 }

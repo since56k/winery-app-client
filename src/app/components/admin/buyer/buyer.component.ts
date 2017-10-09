@@ -72,9 +72,7 @@ export class BuyerComponent implements OnInit {
 
     this.uploader.uploadAll();
     
-    setTimeout(()=>{this.getListBuyer();}, 500);
-
-    
+    setTimeout(()=>{this.getListBuyer();}, 500); 
   }
 
   deleteBuyer(buyerId) {

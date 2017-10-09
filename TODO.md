@@ -15,9 +15,9 @@
 -- Add cart in buyer 
 
 -- refactoring
--- 1 display all products and company in buyer
--- 2 cart buyer sum and database incrementation
-
+-- 1 cart buyer sum and database incrementation with all value
+-- 2 define all the form with the model in backend
+-- 3 define bio stuff with check
 
 
 -- Google Maps and save it in database
