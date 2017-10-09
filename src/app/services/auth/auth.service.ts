@@ -41,7 +41,6 @@ export class AuthService {
       .map(res => {
         let user = new User(res.json());
         this.setUser(user);
-        localStorage.setItem('user', JSON.stringify(user));
         return user;
       });
   }
@@ -53,7 +52,6 @@ export class AuthService {
       .map(res => {
         let user = new User(res.json());
         this.setUser(user);
-        localStorage.setItem('user', JSON.stringify(user));
         return user;
       });
   }

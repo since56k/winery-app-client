@@ -8,6 +8,13 @@
         <div class="panel-body">
           <form [ngClass]="{'has-error': error}" novalidate>
             <fieldset>
+            <label> Do you wanna signIn like Buyer or Company? </label>
+              <select [(ngModel)]="user.role" name="role">
+                <option *ngFor="let role of roles"
+                 [value]="role.value">  
+                {{role.display}}
+                </option>
+              </select>
               <div class="form-group" [ngClass]="{'has-error': error}">
                 <input class="form-control" type="text" placeholder="Username" name="username" 
                 [(ngModel)]="user.username" autofocus>

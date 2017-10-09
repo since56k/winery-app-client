@@ -43,7 +43,7 @@ import { SignupUserComponent } from './pages/user-pages/signup-user/signup-user.
 //Services
 import { AdminService } from './services/admin/admin.service';
 import { BuyerService } from './services/buyer/buyer.service';
-import { CartService } from './services/buyer/cart.service';
+//import { CartService } from './services/buyer/cart.service';
 import { CompanyService } from './services/company/company.service';
 import { ProductsService } from './services/product/products.service';
 import { ItemService } from './services/buyer/item.service';
@@ -91,7 +91,6 @@ import { FileSelectDirective} from "ng2-file-upload";
     CompanyService,
     RequireAuthService,
     AuthService,
-    CartService,
     ProductsService,
     ItemService
   ],

@@ -11,9 +11,16 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class SigninComponent implements OnInit {
 
+  public roles = [
+    { value: 'Buyer', display: 'Buyer' },
+    { value: 'Company', display: 'Company' }
+  ];
+
 	user = new User({
     username: '',
-    password: ''
+    email: '',
+    role: '',
+    password: '',
   });
 
   error: string;
@@ -22,22 +29,58 @@ export class SigninComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) { }
 
   ngOnInit() {
+    
+
   }
 
   login() {
     this.error = null;
     this.auth.login(this.user).subscribe(
       (user) => {
-      	if(user.id){
-          //we have to check the role for redirection in buyer or company
-      		this.user = user,
-      		this.router.navigate(['/buyer/buyer-profile/' + this.user.id]);
-      	} else {this.message = user.message} 	
+      	if(user.id && user.role === this.roles[0].value){
+          this.user = user;
+          console.log('login as buyer');
+            this.router.navigate(['/buyer/buyer-profile/' + this.user.id]);
+          } else if(user.id && user.role === this.roles[1].value){
+            this.user = user;
+            console.log('login as company');
+             this.router.navigate(['/company/company-profile/' + this.user.id]);
+          } else {this.message = user.message} 
       },
       (err) => this.error = err
     );
   }
+
 }
+
+// else if(user.role === this.roles[1].value){
+//             this.user = user;
+//             console.log('login as company')
+//             //this.router.navigate(['/company/company-profile/' + this.user.id]);
+//           } else {console.log('somenthig was wrong') }
+
+
+// login() {
+//     this.error = null;
+//     this.auth.login(this.user).subscribe(
+//       (user) => {
+//         if(user.id){
+//           if(user.role === this.roles[0].value){
+//             this.user = user;
+//             console.log('login as buyer')
+//             console.log(this.user.role)
+//             //this.router.navigate(['/buyer/buyer-profile/' + this.user.id]);
+//           } else if(user.role === this.roles[1].value){
+//             this.user = user;
+//             console.log('login as company')
+//             //this.router.navigate(['/company/company-profile/' + this.user.id]);
+//           } else {console.log('somenthig was wrong') }
+//         } else {this.message = user.message}   
+//       },
+//       (err) => this.error = err
+//     );
+//   }
+
 
 
 

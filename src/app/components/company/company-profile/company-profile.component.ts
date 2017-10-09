@@ -4,6 +4,7 @@ import { Router, ActivatedRoute }    from "@angular/router";
 //Services
 import { CompanyService } from '../../../services/company/company.service';
 import { ProductsService } from '../../../services/product/products.service';
+import { AuthService } from '../../../services/auth/auth.service';
 
 //Third part
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
@@ -46,6 +47,8 @@ export class CompanyProfileComponent implements OnInit {
 
   constructor(
   	private route: ActivatedRoute,
+    private authService: AuthService,
+    private router: Router,
     private productsService: ProductsService,
   	private companyService: CompanyService
   	) { }
@@ -104,6 +107,11 @@ export class CompanyProfileComponent implements OnInit {
         console.log(res);
       });
     }
+  }
+
+  logout() {
+    this.authService.logout().subscribe();
+      this.router.navigate(['/auth/signin']);
   }
 
 

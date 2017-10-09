@@ -3,6 +3,7 @@ export class User {
   username: string;
   email: string;
   message: string;
+  role: string;
 
   constructor(obj: Object = {}) {
     Object.assign(this, obj);

@@ -11,10 +11,16 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class SignupComponent {
 
+  public roles = [
+    { value: 'Buyer', display: 'Buyer' },
+    { value: 'Company', display: 'Company' }
+  ];
+
 	user = new User({
     username: '',
     email: '',
-    password: ''
+    role: '',
+    password: '',
   });
 
   error: string;
@@ -23,16 +29,16 @@ export class SignupComponent {
   constructor(private session: AuthService, private router: Router) { }
 
   signup() {
-     this.session.signup(this.user).subscribe(
-       (data) => {
+      this.session.signup(this.user).subscribe(
+        (data) => {
           if(data.id){
           	this.router.navigate(['/buyer/buyer-profile/' + this.user.id]);
           } else {this.message = data.message}
         },
         (err) => {
           this.error = err;
-        });
- }
+      });
+  }
 
 }
 

@@ -38,9 +38,9 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
 
 
   constructor(
-  	private route: ActivatedRoute,
   	private buyerService: BuyerService,
     private authService: AuthService,
+    private route: ActivatedRoute,
     private router: Router
   ) {}
     
