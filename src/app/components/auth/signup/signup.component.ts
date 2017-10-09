@@ -31,8 +31,12 @@ export class SignupComponent {
   signup() {
       this.session.signup(this.user).subscribe(
         (data) => {
-          if(data.id){
-          	this.router.navigate(['/buyer/buyer-profile/' + this.user.id]);
+          if(data.id && data.role === this.roles[0].value){
+            console.log('log as buyer')
+          	this.router.navigate(['/buyer/buyer-profile/' + data.id]);
+          } else if (data.id && data.role === this.roles[1].value){
+            this.router.navigate(['/company/company-profile/' + data.id]);
+            console.log('log as company')
           } else {this.message = data.message}
         },
         (err) => {
