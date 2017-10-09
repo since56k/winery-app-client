@@ -39,14 +39,13 @@ export class StoreComponent implements OnInit, OnDestroy {
       this.getStoreItems();
 
       this.user = this.authService.getUser();
-          let subscription = this.authService.userChange$.subscribe((user) => {
-          this.user = user;
-          this.subscriptions.push(subscription);
+      let subscription = this.authService.userChange$.subscribe((user) => {
+      this.user = user;
       });
+      this.subscriptions.push(subscription);
 
    }
-
-
+   
    getStoreItems() {
       this.itemService.getItems().subscribe(
           data => this.storeItems = data,

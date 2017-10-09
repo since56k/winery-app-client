@@ -10,49 +10,16 @@
 	<app-navbar-admin *ngIf="user && user.role === 'admin'"></app-navbar-admin>
 		</div>
 
-		// ngOnInit() {
-//     this.getListBuyer();
-//     this.getListCompany();
-//   }
-
-//   getListBuyer(){
-//     this.adminService.getListBuyer()
-//     .subscribe((buyers) => {
-//       this.dataListBuyer = buyers;
-//     });
-//   }
-
-//   getListCompany(){
-//     this.adminService.getListCompany()
-//     .subscribe((companies) => {
-//       this.dataListCompany = companies;
-//     });
-//   }
-
-// getBuyer(id) {
-//     this.buyerService.getBuyer(id)
-//       .subscribe((buyer) => {
-//         this.buyer = buyer;
-         
-//     })
-//   }
-
-// ngOnInit() {
-//     this.route.params.subscribe(params => {
-//       this.getBuyer(params['id']);
-//     });
-//   }
 
 -- Get Upgrade everywhere
 -- Add cart in buyer 
 
 -- refactoring
--- 1 create area for admin and company 
--- 2 signin / up with role verification 
--- 3 display all products and company in buyer
--- 4 display own company products in company
--- 5 update backend and update info frontend
--- 6 cart buyer
+-- 1 display all products and company in buyer
+-- 2 display own company products in company
+-- 3 cart buyer sum and database incrementation
+
+
 
 -- Google Maps and save it in database
 

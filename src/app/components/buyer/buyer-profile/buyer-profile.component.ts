@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-
 import { User } from '../../../models/user.model';
 
 //Services
@@ -49,10 +48,9 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
   ngOnInit() {
       //get user from sigin
       this.user = this.authService.getUser();
-      let subscription = this.authService.userChange$.subscribe((user) => {
+        let subscription = this.authService.userChange$.subscribe((user) => {
         this.user = user;
       });
-
       this.subscriptions.push(subscription);
 
       //call get buyer if i get param from route

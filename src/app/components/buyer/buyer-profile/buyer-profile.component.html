@@ -1,5 +1,5 @@
 <div>
-    <h1>Buyer Profile / </h1>
+    <h1>Buyer Profile / Name: {{buyer?.username}}</h1>
   <div *ngIf="loading">
     <span class="username text">Not autorized</span>
   </div>
@@ -42,9 +42,8 @@
     {{message}}
   </form>
 
-
-
   <h2>Ecommerce</h2>
   <store-app [buyer]="buyer"></store-app>
   <cart-app [buyer]="buyer"></cart-app>
 </div>
+<a [routerLink]="['']"> Back to list </a>
