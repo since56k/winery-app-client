@@ -25,7 +25,6 @@ export class CompanyService {
     console.log('break')
     return this.http.post(`${apiUrl}/companies/newcompany`, company)
       .map((res) => res.json());
-
   }
   
   editCompany(company) {

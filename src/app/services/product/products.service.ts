@@ -21,6 +21,11 @@ export class ProductsService {
       .map((res) => res.json());
   }
 
+  getProductByCompany(companyId) {
+     return this.http.get(`${apiUrl}/products/myproducts/${companyId}`)
+      .map((res) => res.json());
+  }
+
   newProduct(product) {
   	console.log(product)
     return this.http.post(`${apiUrl}/products/newproduct`, product)

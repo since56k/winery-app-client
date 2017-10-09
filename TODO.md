@@ -16,8 +16,7 @@
 
 -- refactoring
 -- 1 display all products and company in buyer
--- 2 display own company products in company
--- 3 cart buyer sum and database incrementation
+-- 2 cart buyer sum and database incrementation
 
 
 

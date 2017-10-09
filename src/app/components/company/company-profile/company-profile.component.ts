@@ -38,6 +38,7 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
   ];
 
   newProduct = {
+    userId: '',
     name: '',
     category: '',
     type: ''
@@ -66,11 +67,12 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
     });
     this.subscriptions.push(subscription);
 
-    this.getListProduct();
+    
 
     //call get buyer if i get param from route
     this.route.params.subscribe(params => {
       this.getCompany(params['id']);
+      this.getProductByCompany(params['id']);
     })
 
     //Upload Images
@@ -90,24 +92,25 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
        })
   }
 
-  getListProduct(){
-    this.productsService.getListProduct()
+  getProductByCompany(id){
+    this.productsService.getProductByCompany(id)
     .subscribe((product) => {
       this.products = product;
+      console.log(this.products)
     });
   }
 
   submit() {
     this.uploader.onBuildItemForm = (item, form) => {
+      form.append('userId', this.user.id)
       form.append('name', this.newProduct.name);
       form.append('category', this.newProduct.category);
       form.append('type', this.newProduct.type);
-
     };
 
     this.uploader.uploadAll();
     
-    setTimeout(()=>{this.getListProduct()}, 500);
+    setTimeout(()=>{this.getProductByCompany(this.user.id)}, 500);
   }
 
   deleteProduct(productId) {
@@ -115,7 +118,7 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
     this.productsService.removeProduct(productId)
       .subscribe(res => {
         this.message = res.message; 
-        this.getListProduct();
+        this.getProductByCompany(this.user.id);
         console.log(res);
       });
     }
