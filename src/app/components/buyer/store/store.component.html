@@ -21,7 +21,7 @@
 <br>
 <br>
 <div>  
-<!--   <p>
+  <p>
   0
     <input type="range" min="0" max="100" 
           [value]="sliderValue" 
@@ -30,10 +30,10 @@
   </p>
   <span>{{ sliderValue }}</span>
     <ul>
-      <li *ngFor="let data of item | PricePipe:sliderValue">
+      <li *ngFor="let data of storeItems | PricePipe:sliderValue">
         {{ data.name }} ({{ data.price }})
       </li>
-    </ul> -->
+    </ul>
 </div> 
 
 

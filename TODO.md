@@ -15,9 +15,9 @@
 -- Add cart in buyer 
 
 -- refactoring
--- 1 define all the form with the model in backend
--- 2 diplsay form with input
--- 3 create 3 components, profile update for buyers and company, and for detailed product
+-- 1 define company type
+-- 2 
+-- 3 defining details product
 
 -- Solve
 -- 0 
