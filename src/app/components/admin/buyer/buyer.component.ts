@@ -66,7 +66,6 @@ export class BuyerComponent implements OnInit {
     this.buyerService.getListBuyer()
     .subscribe((buyer) => {
       this.buyers = buyer;
-      console.log(buyer)
     });
   }
 

@@ -1,14 +1,32 @@
 <h2>Create New Company</h2>
-<form (ngSubmit)="handleNewCompany(companyForm)" #companyForm="ngForm" >
-  <label>name</label>
-  <input type="text" name="username" [(ngModel)]="username">
-  <input type="text" name="email" [(ngModel)]="email">
-  <select name="role" [(ngModel)]="role">
-      <option *ngFor="let role of roles" [value]="role.value">  
+<form style="width: 50%">
+  <fieldset>
+    <legend> Company Fields </legend>
+    <label> Username </label>
+    <input type="text" [(ngModel)]="newCompany.username" name="username" required />
+
+    <label> Email </label>
+    <input type="text" [(ngModel)]="newCompany.email" name="email" required />
+
+    <label> Password </label>
+    <input type="password" [(ngModel)]="newCompany.password" name="password" required />
+
+    <label>Is Organic?</label>
+    <input type="checkbox" name="organic" [(ngModel)]="newCompany.organic">
+
+    <label> Role </label>
+    <!-- <input type="text" [(ngModel)]="newCompany.role" name="name" required /> -->
+    <select [(ngModel)]="newCompany.role" name="role">
+        <option *ngFor="let role of roles" [value]="role.value">  
         {{role.display}}
-      </option>
-  </select>
-  <button type="submit">Add</button>
+        </option>
+    </select>
+ 		<br>
+ 		<label>Image</label>
+    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+
+  </fieldset>
+  <button (click)="submit()"> submit </button>
 </form>
 <span>{{message}}</span>
 <h3>Company List</h3>
@@ -18,6 +36,8 @@
 	     	name: {{ company.username }} <br>
 	      email: {{ company.email }} <br>
 	      role: {{company.role}}<br>
+	      organic: {{company.organic}}<br>
+	      <img src="{{apiUrl+company.image}}" alt="">
 			
 			<button>
 	   			<a [routerLink]="['/company/company-profile', company._id]">View Details Company</a>

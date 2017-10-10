@@ -42,3 +42,16 @@
   //     });
    
   // }
+
+
+<!--   <form (ngSubmit)="handleNewCompany(companyForm)" #companyForm="ngForm" >
+  <label>name</label>
+  <input type="text" name="username" [(ngModel)]="username">
+  <input type="text" name="email" [(ngModel)]="email">
+  <select name="role" [(ngModel)]="role">
+      <option *ngFor="let role of roles" [value]="role.value">  
+        {{role.display}}
+      </option>
+  </select>
+  <button type="submit">Add</button>
+</form> -->

@@ -46,7 +46,8 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
     name: '',
     category: '',
     type: '',
-    organic: ''
+    price: '',
+    organic: Boolean,
   };
 
   companyData = {
@@ -124,6 +125,7 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
         form.append('name', this.newProduct.name);
         form.append('category', this.newProduct.category);
         form.append('type', this.newProduct.type);
+        form.append('price', this.newProduct.price);
         form.append('organic', this.newProduct.organic);
         //date
       };

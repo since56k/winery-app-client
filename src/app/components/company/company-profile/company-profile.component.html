@@ -19,11 +19,13 @@
 <span>{{message}}</span>
 <br>
 <h3>Product List</h3>
+<span *ngIf="products !== 0">N of your products: {{products.length}}</span>
 	<ul>
 	    <li *ngFor="let product of products">
 	      Product Name: {{ product.name }} <br>
 	      Category: {{ product.category }} <br>
         Type: {{product.type}}<br>
+        price: {{product.price}}<br>
         <div *ngIf="product.organic">
           <span >Organic: {{product.organic}}</span><br>
           <img src="https://ec.europa.eu/agriculture/organic/sites/orgfarming/files/img/body/organic_farming_logo.jpg" alt="" width="100px"><br>
@@ -50,18 +52,21 @@
       <input type="text" [(ngModel)]="newProduct.name" name="name" required />
 
       <label> Product Category </label>
-       <select [(ngModel)]="newProduct.category" name="category">
+       <select [(ngModel)]="newProduct.category" name="category" required>
           <option *ngFor="let category of categories" [value]="category.value">  
           {{category.display}}
           </option>
       </select>
 
       <label> Type </label>
-      <select [(ngModel)]="newProduct.type" name="type">
+      <select [(ngModel)]="newProduct.type" name="type" required>
           <option *ngFor="let type of types" [value]="type.value">  
           {{type.display}}
           </option>
       </select>
+      <br>
+      <label> Price </label>
+      <input type="number" [(ngModel)]="newProduct.price" name="price" required />
 
       <label>Is Organic?</label>
           <input type="checkbox" name="organic" [(ngModel)]="newProduct.organic">
