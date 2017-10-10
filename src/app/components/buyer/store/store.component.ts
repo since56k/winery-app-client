@@ -20,25 +20,25 @@ export class StoreComponent implements OnInit, OnDestroy {
 
   sliderValue:number = 20;
 
-  // item:Array<any> = [{
-  //     name: 'Justin Bieber',
-  //     price: 21
-  //   }, {
-  //     name: 'Miley Cyrus',
-  //     price: 23
-  //   }, {
-  //     name: 'John Legend',
-  //     price: 37
-  //   }, {
-  //     name: 'Betty White',
-  //     price: 94
-  //   }, {
-  //     name: 'Roger Waters',
-  //     price: 72
-  //   }, {
-  //     name: 'Larry Pprice',
-  //     price: 42
-  //   }];
+  item:Array<any> = [{
+      name: 'vino',
+      price: 21
+    }, {
+      name: 'olio',
+      price: 23
+    }, {
+      name: 'miele',
+      price: 37
+    }, {
+      name: 'vino',
+      price: 94
+    }, {
+      name: 'olio',
+      price: 72
+    }, {
+      name: 'miele',
+      price: 42
+    }];
 
   @Input() buyer: any
 
@@ -71,7 +71,8 @@ export class StoreComponent implements OnInit, OnDestroy {
       this.itemService.getItems().subscribe(
           res => {
             this.storeItems = res;
-            console.log(this.storeItems)
+            console.log('cart', this.storeItems)
+            console.log('items', this.item)
           },
           
           error =>  this.message = error);

@@ -6,15 +6,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class PricePipe implements PipeTransform {
 
-  // Transform is the new "return function(value, args)" in Angular 1.x
   transform(value, args?) {
-  	console.log(value, args)
-    // ES6 array destructuring
+    if(value && args){
+    console.log(value, args)
     let minPrice = args;
     return value.filter(item => {
-    	console.log(item.price, minPrice)
+      console.log(item.price, minPrice)
       return item.price >= minPrice;
     });
+    }
+  	
   }
 }
 

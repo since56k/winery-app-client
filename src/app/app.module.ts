@@ -59,6 +59,7 @@ import { CompanyInfoComponent } from './components/company/company-info/company-
 
 //Pipe
 import {PricePipe} from './pipes/store.pipes';
+import {BioPipe} from './pipes/bio.pipe';
 
 
 
@@ -84,7 +85,8 @@ import {PricePipe} from './pipes/store.pipes';
     ProductDetailsComponent,
     BuyerInfoComponent,
     CompanyInfoComponent,
-    PricePipe
+    PricePipe,
+    BioPipe
   ],
   imports: [
     BrowserModule,
