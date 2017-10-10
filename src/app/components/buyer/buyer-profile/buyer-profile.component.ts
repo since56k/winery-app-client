@@ -82,7 +82,6 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
     this.companyService.getListCompany()
     .subscribe((company) => {
       this.companies = company;
-      console.log(this.companies);
     });
   }
 

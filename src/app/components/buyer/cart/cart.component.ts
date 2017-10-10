@@ -13,16 +13,17 @@ import { AuthService } from '../../../services/auth/auth.service';
 })
 export class CartComponent implements OnInit { 
 
-   cartItems: any;
-   user: any;
-   subscriptions: any;
-   error: any;
-   data: any;
-   message: any;
-   amount: number;
-
-   @Input() buyer: any
-
+  cartItems: any;
+  user: any;
+  subscriptions: any;  
+  data: any;
+  error: string;
+  message: string;
+  amount: number;
+  price: number;
+  sumTotal: number;
+   
+  @Input() buyer: any
 
    constructor(
      private itemService: ItemService, 
@@ -35,11 +36,12 @@ export class CartComponent implements OnInit {
    ngOnInit() {
 
       this.route.params.subscribe(params => {
-        this.user = params['id'];        
+        this.user = params['id'];  
       })
 
-      this.getItemsForCart(this.user);        
+      this.getItemsForCart(this.user); 
 
+          
       //Observable
       this.itemService.currentMessage.subscribe(message => {
         this.message = message;
@@ -47,6 +49,8 @@ export class CartComponent implements OnInit {
       }, error => {
           console.log('error')
       });
+
+
    }
 
    getItemsForCart(id) {
@@ -54,16 +58,22 @@ export class CartComponent implements OnInit {
         res => {
           this.amount = res.amount; 
           this.cartItems = res.cartItems; 
-          console.log('CART ITEMS', this.cartItems, this.amount)
+          console.log(this.cartItems)
+          this.calculateTotal();
       },
         error => {
             console.log('error to upload in cart');
       });
    }
 
-   
+   calculateTotal() {
+     this.sumTotal = this.cartItems.reduce(function(sum, d) {
+        return sum + d.price;
+    }, 0);
+      console.log(this.sumTotal);
+  }
+  
    removeItemFromCart(itemId) {
-      //if (window.confirm('Are you sure?'))
       this.itemService.removeItem(itemId, this.user).subscribe(
         res => {
           this.message = res.message; 

@@ -22,13 +22,12 @@ export class CompanyService {
   }
 
   newCompany(company) {
-    console.log('break')
     return this.http.post(`${apiUrl}/companies/newcompany`, company)
       .map((res) => res.json());
   }
   
   editCompany(company) {
-    return this.http.put(`${apiUrl}/companies/${company.id}`, company)
+    return this.http.put(`${apiUrl}/companies/update/${company.id}`, company)
       .map((res) => res.json());
   }
   

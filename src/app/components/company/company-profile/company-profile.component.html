@@ -1,9 +1,11 @@
 
 <div *ngIf="auth">
-<h1>Company Profile / Name: {{company?.username}}</h1>
+
 </div>
 <div *ngIf="!auth && user">
+<h1>Company Profile / Name: {{company?.username}}</h1>
 <h2>Company Details</h2>
+
 <span>The Id of this company is: <strong>{{ company?._id }}</strong></span>
 
 <button>
@@ -19,7 +21,7 @@
 <span>{{message}}</span>
 <br>
 <h3>Product List</h3>
-<span *ngIf="products !== 0">N of your products: {{products.length}}</span>
+<span *ngIf="products !== 0">N of your products: {{products?.length}}</span>
 	<ul>
 	    <li *ngFor="let product of products">
 	      Product Name: {{ product.name }} <br>
@@ -41,10 +43,10 @@
 	    </li>
 	</ul>
 <br>
-<button (click)="displayForm()" *ngIf="showHide">Upload Product</button>
-<h2>Create New Product</h2>
+<button (click)="displayUpdateProduct()" *ngIf="showHide">Create Product</button>
 <br>
 <div *ngIf="!showHide">
+<h2>Create New Product</h2>
   <form style="width: 50%">
     <fieldset>
       <legend> Product Fields </legend>
@@ -78,7 +80,31 @@
     <button type="submit" (click)="submitForm()"> submit </button>
   </form>
 </div>
-</div>
+
+<button (click)="displayUpdateProfile()" *ngIf="showHideProfile">Update Profile</button>
+<div *ngIf="!showHideProfile">
+<h2>Update Profile</h2>
+      <form (ngSubmit)="handleUpdateCompany(companyForm)" #companyForm="ngForm">
+      <legend> Profile Fields </legend>
+      <!-- <input type="text" name="photo" [(ngModel)]="fileName" id="none-input"/> -->
+        <label>name</label>
+          <input type="text" name="username" [(ngModel)]="username">
+        <label>email</label>
+          <input type="text" name="email" [(ngModel)]="email">
+        <label>website</label>
+          <input type="text" name="website" [(ngModel)]="website">  
+
+        <label>Is Organic?</label>
+          <input type="checkbox" name="organic" [(ngModel)]="organic">
+              
+      <!--  <label>Image</label>
+          <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+          <p class="message" *ngIf="uploadRequired">Please select a file</p> -->
+        <button type="submit">Update Profile</button>
+        {{message}}
+      </form>
+  </div>
+  </div>    
 <a [routerLink]="['']"> Back to list </a>
 
 

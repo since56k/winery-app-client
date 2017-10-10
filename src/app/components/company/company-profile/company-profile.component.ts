@@ -64,6 +64,7 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
   message: string;
   auth: boolean = true;
   showHide: boolean = true;
+  showHideProfile: boolean = true;
   uploadRequired: boolean;
 
 
@@ -115,7 +116,27 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
     });
   }
 
-  displayForm(){
+  displayUpdateProfile(){
+     this.showHideProfile = false;
+  }
+
+  handleUpdateCompany(form) {
+    const editCompany = { id: this.user.id, username: form.value.username, email: form.value.email, organic: form.value.organic, website: form.value.website };
+      this.companyService.editCompany(editCompany)
+      .subscribe(
+        res => {
+        this.message = res.message; 
+        this.getCompany(this.user.id);
+        this.showHideProfile = true;
+
+      },
+        error => {
+            console.log('error to upload company');
+      });
+   
+  }
+
+  displayUpdateProduct(){
      this.showHide = false;
   }
 
@@ -133,7 +154,6 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
       this.uploader.uploadAll();
 
       setTimeout(()=>{this.getProductByCompany(this.user.id); this.showHide = true;}, 500);
-
     }
    
   deleteProduct(productId) {
