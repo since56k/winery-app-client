@@ -54,6 +54,8 @@ import { RequireAuthService } from './routes/guards/require-auth.service';
 
 //Third parts module
 import { FileSelectDirective} from "ng2-file-upload";
+import { BuyerInfoComponent } from './components/buyer/buyer-info/buyer-info.component';
+import { CompanyInfoComponent } from './components/company/company-info/company-info.component';
 
 
 
@@ -76,7 +78,9 @@ import { FileSelectDirective} from "ng2-file-upload";
     CartComponent,
     StoreComponent,
     ProductListComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    BuyerInfoComponent,
+    CompanyInfoComponent
   ],
   imports: [
     BrowserModule,

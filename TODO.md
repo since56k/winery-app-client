@@ -6,7 +6,7 @@
 	<div *ngIf="!user">
 		login / signup or nothing if you cand do that from other place
 	</div>
-
+ 
 	<app-navbar-admin *ngIf="user && user.role === 'admin'"></app-navbar-admin>
 		</div>
 
@@ -16,12 +16,29 @@
 
 -- refactoring
 -- 1 define all the form with the model in backend
--- 2 
--- 3 
+-- 2 diplsay form with input
+-- 3 create 3 components, profile update for buyers and company, and for detailed product
 
 -- Solve
--- 1 Observable
--- 2 auth from other account 
+-- 0 
+-- 1 auth from other account 
 
 -- Google Maps and save it in database
 
+
+
+ // handleUpdateBuyer(form) {
+  //   const editBuyer = { id: this.user.id, username: form.value.username, email: form.value.email, role: form.value.role };
+  //     this.buyerService.editBuyer(editBuyer)
+  //     .subscribe(
+  //       res => {
+  //       this.message = res.message; 
+  //       this.getBuyer(this.user.id);
+  //       this.showHide = true;
+
+  //     },
+  //       error => {
+  //           console.log('error to upload buyer');
+  //     });
+   
+  // }

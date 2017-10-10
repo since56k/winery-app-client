@@ -26,39 +26,51 @@
   {{buyer?.email}}
 </span>
 <div *ngIf="!auth && user">
-  <h2>Update Profile</h2>
-  <form (ngSubmit)="handleUpdateBuyer(companyForm)" #companyForm="ngForm" >
-    <label>name</label>
-    <input type="text" name="username" [(ngModel)]="username">
-    <label>email</label>
-    <input type="text" name="email" [(ngModel)]="email">
-    <label>role</label>
-    <select name="role" [(ngModel)]="role">
-        <option *ngFor="let role of roles" [value]="role.value">  
-          {{role.display}}
-        </option>
-    </select>
-    <button type="submit">Add</button>
-    {{message}}
-  </form>
 
-  <h2>Ecommerce</h2>
-  <store-app [buyer]="buyer"></store-app>
-  <cart-app [buyer]="buyer"></cart-app>
-  <br>
+      <h2>Ecommerce</h2>
+      <store-app [buyer]="buyer"></store-app>
+      <cart-app [buyer]="buyer"></cart-app>
+      <br>
 
-  <h2>Companis</h2>
-  <ul>
-    <li *ngFor="let company of companies">
-          name: {{ company.username }} <br>
-          email: {{ company.email }} <br>
-          role: {{company.role}}<br>
-        
-        <button>
-            <a [routerLink]="['/company/company-profile', company._id]">View Details Company</a>
-        </button>
-        <button type="submit" (click)="deleteCompany(company._id)">Delete</button>
-    </li>
-</ul>
+      <h2>Companis</h2>
+      <ul>
+        <li *ngFor="let company of companies">
+              name: {{ company.username }} <br>
+              email: {{ company.email }} <br>
+              role: {{company.role}}<br>
+            
+            <button>
+                <a [routerLink]="['/company/company-profile', company._id]">View Details Company</a>
+            </button>
+        </li>
+    </ul>
+    
+    <button (click)="displayForm()" *ngIf="showHide">Profile Settings</button>
+    <div *ngIf="!showHide">
+
+      <h2>Update Profile</h2>
+      <form (ngSubmit)="handleUpdateBuyer(buyerForm)" #buyerForm="ngForm">
+      <input type="text" name="photo" [(ngModel)]="fileName" id="none-input"/>
+        <label>name</label>
+          <input type="text" name="username" [(ngModel)]="username">
+        <label>email</label>
+          <input type="text" name="email" [(ngModel)]="email">
+        <label>role</label>
+          <select name="role" [(ngModel)]="role">
+            <option *ngFor="let role of roles" [value]="role.value">
+              {{role.display}}
+            </option>
+          </select>
+          <div class="field" [ngClass]="{'has-error': uploadRequired}">
+      <!--  <label>Image</label>
+          <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+          <p class="message" *ngIf="uploadRequired">Please select a file</p> -->
+         </div>
+        <button type="submit">Add</button>
+        {{message}}
+      </form>
+    </div>
+
 </div>
+
 <a [routerLink]="['']"> Back to list </a>

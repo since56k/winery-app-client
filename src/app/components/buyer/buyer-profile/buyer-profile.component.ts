@@ -23,7 +23,6 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
     { value: 'Guest', display: 'Guest' }
   ];
 
-
   subscriptions = [];
 
   updateBuyer = []
@@ -39,6 +38,7 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
   companies: any;
 
   auth: boolean = true;
+  showHide: boolean = true;
 
 
   constructor(
@@ -92,12 +92,18 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
       .subscribe(
         res => {
         this.message = res.message; 
-        this.getBuyer(this.user.id)
+        this.getBuyer(this.user.id);
+        this.showHide = true;
+
       },
         error => {
             console.log('error to upload buyer');
       });
    
+  }
+
+  displayForm(){
+     this.showHide = false;
   }
 
 

@@ -11,37 +11,7 @@
 </button>
 
 
-<h2>Create New Product</h2>
-<br>
-<form style="width: 50%">
-  <fieldset>
-    <legend> Product Fields </legend>
-    <label> Product Name </label>
-    <input type="text" [(ngModel)]="newProduct.name" name="name" required />
 
-    <label> Product Category </label>
-     <select [(ngModel)]="newProduct.category" name="category">
-        <option *ngFor="let category of categories" [value]="category.value">  
-        {{category.display}}
-        </option>
-    </select>
-
-    <label> Type </label>
-    <select [(ngModel)]="newProduct.type" name="type">
-        <option *ngFor="let type of types" [value]="type.value">  
-        {{type.display}}
-        </option>
-    </select>
-
-    <label>Is Organic?</label>
-        <input type="checkbox" name="organic" [(ngModel)]="newProduct.organic">
- 		<br>
- 		<label>Image</label>
-        <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
-
-  </fieldset>
-  <button type="submit" (click)="submit()"> submit </button>
-</form>
 
 <button (click)="logout()">logout</button>
 </div>
@@ -69,6 +39,40 @@
 	    </li>
 	</ul>
 <br>
+<button (click)="displayForm()" *ngIf="showHide">Upload Product</button>
+<h2>Create New Product</h2>
+<br>
+<div *ngIf="!showHide">
+  <form style="width: 50%">
+    <fieldset>
+      <legend> Product Fields </legend>
+      <label> Product Name </label>
+      <input type="text" [(ngModel)]="newProduct.name" name="name" required />
+
+      <label> Product Category </label>
+       <select [(ngModel)]="newProduct.category" name="category">
+          <option *ngFor="let category of categories" [value]="category.value">  
+          {{category.display}}
+          </option>
+      </select>
+
+      <label> Type </label>
+      <select [(ngModel)]="newProduct.type" name="type">
+          <option *ngFor="let type of types" [value]="type.value">  
+          {{type.display}}
+          </option>
+      </select>
+
+      <label>Is Organic?</label>
+          <input type="checkbox" name="organic" [(ngModel)]="newProduct.organic">
+      <br>
+      <label>Image</label>
+          <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+
+    </fieldset>
+    <button type="submit" (click)="submitForm()"> submit </button>
+  </form>
+</div>
 </div>
 <a [routerLink]="['']"> Back to list </a>
 

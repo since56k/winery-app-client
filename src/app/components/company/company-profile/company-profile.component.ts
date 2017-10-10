@@ -49,12 +49,21 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
     organic: ''
   };
 
+  companyData = {
+    username: String,
+    email: String,
+    organic: Boolean,
+    fileName: null,
+  };
+
   subscriptions = [];
   user: User;
 	company: any;
   products: any;
   message: string;
   auth: boolean = true;
+  showHide: boolean = true;
+  uploadRequired: boolean;
 
 
   constructor(
@@ -105,9 +114,11 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
     });
   }
 
-  submit() {
-    //const files = this.uploader.getNotUploadedItems();
-    
+  displayForm(){
+     this.showHide = false;
+  }
+
+  submitForm() {
       this.uploader.onBuildItemForm = (item, form) => {
         form.append('userId', this.user.id)
         form.append('name', this.newProduct.name);
@@ -115,12 +126,11 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
         form.append('type', this.newProduct.type);
         form.append('organic', this.newProduct.organic);
         //date
-
       };
 
       this.uploader.uploadAll();
 
-      setTimeout(()=>{this.getProductByCompany(this.user.id)}, 500);
+      setTimeout(()=>{this.getProductByCompany(this.user.id); this.showHide = true;}, 500);
 
     }
    

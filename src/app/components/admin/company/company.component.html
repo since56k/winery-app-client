@@ -12,6 +12,7 @@
 </form>
 <span>{{message}}</span>
 <h3>Company List</h3>
+<span *ngIf="companies !== undefined">N Companies {{companies.length}}</span>
 <ul>
 	<li *ngFor="let company of companies">
 	     	name: {{ company.username }} <br>

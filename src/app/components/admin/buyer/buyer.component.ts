@@ -4,6 +4,8 @@ import { Router, ActivatedRoute }    from "@angular/router";
 //Services
 import { BuyerService } from '../../../services/buyer/buyer.service';
 
+import { environment } from '../../../../environments/environment';
+
 //Third part
 import {  FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
@@ -19,6 +21,8 @@ const URL = 'http://localhost:3000/api/buyers/newbuyer';
 
 export class BuyerComponent implements OnInit {
 
+
+
   public roles = [
     { value: 'Buyer', display: 'Buyer' },
     { value: 'Company', display: 'Company' },
@@ -30,12 +34,14 @@ export class BuyerComponent implements OnInit {
   newBuyer = {
     username: '',
     email: '',
-    role: ''
+    role: '',
+    password: '',
   };
 
 
 	buyers: any;
   message: any;
+  apiUrl = environment.apiUrl;
 
   constructor(
   	private route: ActivatedRoute,
@@ -60,6 +66,7 @@ export class BuyerComponent implements OnInit {
     this.buyerService.getListBuyer()
     .subscribe((buyer) => {
       this.buyers = buyer;
+      console.log(buyer)
     });
   }
 
@@ -67,6 +74,7 @@ export class BuyerComponent implements OnInit {
     this.uploader.onBuildItemForm = (item, form) => {
       form.append('username', this.newBuyer.username);
       form.append('email', this.newBuyer.email);
+      form.append('password', this.newBuyer.password);
       form.append('role', this.newBuyer.role);
     };
 

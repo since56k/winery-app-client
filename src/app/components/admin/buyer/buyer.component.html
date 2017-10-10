@@ -10,6 +10,9 @@
     <label> Email </label>
     <input type="text" [(ngModel)]="newBuyer.email" name="email" required />
 
+    <label> Password </label>
+    <input type="password" [(ngModel)]="newBuyer.password" name="password" required />
+
     <label> Role </label>
     <!-- <input type="text" [(ngModel)]="newBuyer.role" name="name" required /> -->
     <select [(ngModel)]="newBuyer.role" name="role">
@@ -28,11 +31,13 @@
 <span>{{message}}</span>
 <br>
 <h3>Buyer List</h3>
+<span *ngIf="buyers !== undefined">N Buyers {{buyers.length}}</span>
 	<ul>
 	    <li *ngFor="let buyer of buyers">
 	      name: {{ buyer.username }} <br>
 	      email: {{ buyer.email }} <br>
 	      role: {{buyer.role}}<br>
+        <img src="{{apiUrl+buyer.image}}" alt="">
 	      <div class="phone-thumbnail">
         	<img height="300" [src]="buyer.image" />
       	</div>
