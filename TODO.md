@@ -15,10 +15,13 @@
 -- Add cart in buyer 
 
 -- refactoring
--- 1 cart buyer sum and database incrementation with all value
--- 2 define all the form with the model in backend
--- 3 define bio stuff with check
+-- 1 define all the form with the model in backend
+-- 2 
+-- 3 
 
+-- Solve
+-- 1 Observable
+-- 2 auth from other account 
 
 -- Google Maps and save it in database
 

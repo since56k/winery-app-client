@@ -32,9 +32,12 @@
         {{type.display}}
         </option>
     </select>
+
+    <label>Is Organic?</label>
+        <input type="checkbox" name="organic" [(ngModel)]="newProduct.organic">
  		<br>
  		<label>Image</label>
-    <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+        <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
 
   </fieldset>
   <button type="submit" (click)="submit()"> submit </button>
@@ -50,7 +53,11 @@
 	    <li *ngFor="let product of products">
 	      Product Name: {{ product.name }} <br>
 	      Category: {{ product.category }} <br>
-	      Type: {{product.type}}<br>
+        Type: {{product.type}}<br>
+        <div *ngIf="product.organic">
+          <span >Organic: {{product.organic}}</span><br>
+          <img src="https://ec.europa.eu/agriculture/organic/sites/orgfarming/files/img/body/organic_farming_logo.jpg" alt="" width="100px"><br>
+        </div>
         UserId: {{product.userId}}
 	      <div class="phone-thumbnail">
         	<img height="300" [src]="product.image" />

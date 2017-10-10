@@ -36,6 +36,7 @@ export class StoreComponent implements OnInit, OnDestroy {
 
       this.getStoreItems();
 
+      //Observable
       this.user = this.authService.getUser();
       let subscription = this.authService.userChange$.subscribe((user) => {
       this.user = user;
@@ -47,21 +48,18 @@ export class StoreComponent implements OnInit, OnDestroy {
    getStoreItems() {
       this.itemService.getItems().subscribe(
           data => this.storeItems = data,
-          error =>  this.message = <any>error);
+          error =>  this.message = error);
    }
 
-
    addItemInCart(item) {
-     //*OBSERVABLE*//
-     //this.itemService.newEvent('clicked!');
-
 	    this.itemService.addItem(item, this.user.id).subscribe(
         res => {
         this.message = res.message; 
+        this.itemService.changeMessage("Observable for update the cart");
         console.log('update cart')
       },
         error => {
-            console.log('error to upload cart');
+        console.log('error to upload cart');
       });
    }
 

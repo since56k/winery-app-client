@@ -34,14 +34,19 @@ export class CartComponent implements OnInit {
 
    ngOnInit() {
 
-        this.route.params.subscribe(params => {
+      this.route.params.subscribe(params => {
         this.user = params['id'];        
-       })
+      })
 
-        this.getItemsForCart(this.user);        
-        //*OBSERVABLE*//
-       //this.itemService.events$.forEach(event => console.log(event));
+      this.getItemsForCart(this.user);        
 
+      //Observable
+      this.itemService.currentMessage.subscribe(message => {
+        this.message = message;
+        this.getItemsForCart(this.user);
+      }, error => {
+          console.log('error')
+      });
    }
 
    getItemsForCart(id) {

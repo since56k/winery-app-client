@@ -45,14 +45,15 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
     userId: '',
     name: '',
     category: '',
-    type: ''
+    type: '',
+    organic: ''
   };
 
   subscriptions = [];
   user: User;
 	company: any;
   products: any;
-  message: any;
+  message: string;
   auth: boolean = true;
 
 
@@ -112,6 +113,9 @@ export class CompanyProfileComponent implements OnInit, OnDestroy {
         form.append('name', this.newProduct.name);
         form.append('category', this.newProduct.category);
         form.append('type', this.newProduct.type);
+        form.append('organic', this.newProduct.organic);
+        //date
+
       };
 
       this.uploader.uploadAll();

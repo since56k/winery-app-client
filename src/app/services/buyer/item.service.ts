@@ -3,34 +3,30 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { Item } from './item';
-
+import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 //import { Subject } from 'rxjs/Subject';
 
 import { environment } from '../../../environments/environment';
 
 const apiUrl = environment.apiUrl + '/api';
-
+// Observable string stream fro user
 
 
 @Injectable()
 export class ItemService {
 
-  // private _subject = new Subject<any>();
-  data: any;
-  error: any;
+	private messageSource = new BehaviorSubject<any>("");
+  				
+  currentMessage = this.messageSource.asObservable();
 
 	constructor(private http:Http) 
 	{}
 
-	//OBSERVABLE FOR UPDATE CART
-	// newEvent(event) {
- //    this._subject.next(event);
- //  }
+	changeMessage(message: any) {
+    this.messageSource.next(message)
+  }
 
- //  get events$ () {
- //    return this._subject.asObservable();
- //  }
-  //**//
 
 	getItems() {
 	   return this.http.get(`${apiUrl}/products`)
