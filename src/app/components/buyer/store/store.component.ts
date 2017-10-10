@@ -9,16 +9,40 @@ import { AuthService } from '../../../services/auth/auth.service';
 import { Item } from '../../../services/buyer/item';
 import { ItemService } from '../../../services/buyer/item.service';
 
+
+
 @Component({
   selector: 'store-app',
   templateUrl: './store.component.html', 
-  styleUrls: ['./store.component.css']
+  styleUrls: ['./store.component.css'],
 })
 export class StoreComponent implements OnInit, OnDestroy { 
 
+  sliderValue:number = 20;
+
+  // item:Array<any> = [{
+  //     name: 'Justin Bieber',
+  //     price: 21
+  //   }, {
+  //     name: 'Miley Cyrus',
+  //     price: 23
+  //   }, {
+  //     name: 'John Legend',
+  //     price: 37
+  //   }, {
+  //     name: 'Betty White',
+  //     price: 94
+  //   }, {
+  //     name: 'Roger Waters',
+  //     price: 72
+  //   }, {
+  //     name: 'Larry Pprice',
+  //     price: 42
+  //   }];
+
   @Input() buyer: any
 
-  storeItems: Item[] = [];
+  storeItems: any;
 
   subscriptions = [];
 
@@ -45,7 +69,11 @@ export class StoreComponent implements OnInit, OnDestroy {
    
    getStoreItems() {
       this.itemService.getItems().subscribe(
-          data => this.storeItems = data,
+          res => {
+            this.storeItems = res;
+            console.log(this.storeItems)
+          },
+          
           error =>  this.message = error);
    }
 

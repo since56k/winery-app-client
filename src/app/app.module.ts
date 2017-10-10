@@ -57,6 +57,9 @@ import { FileSelectDirective} from "ng2-file-upload";
 import { BuyerInfoComponent } from './components/buyer/buyer-info/buyer-info.component';
 import { CompanyInfoComponent } from './components/company/company-info/company-info.component';
 
+//Pipe
+import {PricePipe} from './pipes/store.pipes';
+
 
 
 @NgModule({
@@ -80,7 +83,8 @@ import { CompanyInfoComponent } from './components/company/company-info/company-
     ProductListComponent,
     ProductDetailsComponent,
     BuyerInfoComponent,
-    CompanyInfoComponent
+    CompanyInfoComponent,
+    PricePipe
   ],
   imports: [
     BrowserModule,
