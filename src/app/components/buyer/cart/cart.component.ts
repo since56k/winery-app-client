@@ -58,7 +58,6 @@ export class CartComponent implements OnInit {
         res => {
           this.amount = res.amount; 
           this.cartItems = res.cartItems; 
-          console.log(this.cartItems)
           this.calculateTotal();
       },
         error => {
@@ -70,7 +69,6 @@ export class CartComponent implements OnInit {
      this.sumTotal = this.cartItems.reduce(function(sum, d) {
         return sum + d.price;
     }, 0);
-      console.log(this.sumTotal);
   }
   
    removeItemFromCart(itemId) {

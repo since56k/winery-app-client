@@ -15,8 +15,6 @@ import { CompanyService } from '../../../services/company/company.service';
 })
 export class BuyerProfileComponent implements OnInit, OnDestroy {
 
-
-
   public roles = [
     { value: 'Buyer', display: 'Buyer' },
     { value: 'Company', display: 'Company' },
@@ -29,9 +27,7 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
 
   user: User;
 
-  message: any;
-
-  loading: string;
+  message: string;
 
   buyer: any;
 
@@ -39,7 +35,6 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
 
   auth: boolean = true;
   showHide: boolean = true;
-
 
   constructor(
     private buyerService: BuyerService,
@@ -49,8 +44,6 @@ export class BuyerProfileComponent implements OnInit, OnDestroy {
     private router: Router
   ) {}
     
-
-
   ngOnInit() {
      
     this.auth = false;

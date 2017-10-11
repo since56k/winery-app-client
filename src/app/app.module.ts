@@ -20,6 +20,8 @@ import { BuyerProfileComponent } from './components/buyer/buyer-profile/buyer-pr
 //Buyer Cart and Store
 import { CartComponent } from './components/buyer/cart/cart.component';
 import { StoreComponent } from './components/buyer/store/store.component';
+import { OrderPaymentComponent } from './components/buyer/order-payment/order-payment.component';
+
 
 //Company Components
 import { CompanyProfileComponent } from './components/company/company-profile/company-profile.component';
@@ -54,8 +56,6 @@ import { RequireAuthService } from './routes/guards/require-auth.service';
 
 //Third parts module
 import { FileSelectDirective} from "ng2-file-upload";
-import { BuyerInfoComponent } from './components/buyer/buyer-info/buyer-info.component';
-import { CompanyInfoComponent } from './components/company/company-info/company-info.component';
 
 //Pipe
 import {PricePipe} from './pipes/store.pipes';
@@ -83,10 +83,9 @@ import {BioPipe} from './pipes/bio.pipe';
     StoreComponent,
     ProductListComponent,
     ProductDetailsComponent,
-    BuyerInfoComponent,
-    CompanyInfoComponent,
     PricePipe,
-    BioPipe
+    BioPipe,
+    OrderPaymentComponent
   ],
   imports: [
     BrowserModule,

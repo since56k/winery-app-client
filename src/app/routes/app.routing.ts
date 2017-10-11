@@ -12,7 +12,8 @@ import { SignupUserComponent } from '../pages/user-pages/signup-user/signup-user
 import { AdminComponent } from '../components/admin/admin/admin.component';
 
 import { BuyerComponent } from '../components/admin/buyer/buyer.component';
-import { CartComponent } from '../components/buyer/cart/cart.component'
+import { CartComponent } from '../components/buyer/cart/cart.component';
+import { OrderPaymentComponent } from '../components/buyer/order-payment/order-payment.component';
 
 import { CompanyComponent } from '../components/admin/company/company.component';
 
@@ -59,6 +60,16 @@ export const routes: Routes = [
   { path: 'buyer/cart', children: [
     { path: '', component: CartComponent },
     { path: ':id', component: CartComponent }
+  ] },
+
+  // * Product Details * //
+  { path: 'product', children: [
+    { path: ':id', component: ProductDetailsComponent }
+  ] },
+
+  // * Products Payment * //
+  { path: 'buyer/order-payment', children: [
+    { path: '', component: OrderPaymentComponent }
   ] },
 
   // * Redirect if not found * //

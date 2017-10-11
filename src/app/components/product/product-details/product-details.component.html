@@ -1,3 +1,18 @@
-<p>
-  product-details works!
-</p>
+<h2>Product {{product?.name}}</h2>
+<div>
+	<ul>
+		<li>Name: {{product?.name}}</li>
+		<li>Price: {{product?.price}}</li>
+		<li>Type: {{product?.type}}</li>
+		<li>Category: {{product?.category}}</li>
+		<div class="">
+        	<img height="300" [src]="product?.image" />
+    </div>
+		<div *ngIf="product?.organic">
+          <img src="https://ec.europa.eu/agriculture/organic/sites/orgfarming/files/img/body/organic_farming_logo.jpg" alt="" width="100px"><br>
+    </div>
+    <li>Organic: {{product?.organic}}</li>
+	</ul>
+	<button (click)="goBack()">Back</button>
+</div>
+

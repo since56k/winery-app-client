@@ -1,7 +1,7 @@
 
   <h3>{{buyer?.username}} Cart</h3>
-  	  <span>Amount: {{amount}} </span>
-  	  <span>Total price: {{ sumTotal }}</span>
+  	  <span>Amount: <strong>{{amount}}</strong> </span>
+  	  <span>Total price: <strong>{{ sumTotal }}</strong></span>
   <ul *ngFor="let item of cartItems">
 	<li>
 	  <span> {{item?.name}} </span> 
@@ -9,6 +9,9 @@
 	  <span><button type="button" (click)="removeItemFromCart(item._id)">Remove</button></span>
 	</li>
   </ul>
+  <button><a [routerLink]="['/buyer/order-payment']">Process the order</a></button>
+      	
+
 <span>{{message}}</span>
 
 

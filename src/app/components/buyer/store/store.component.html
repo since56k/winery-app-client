@@ -1,14 +1,20 @@
 <div [ngClass]="'leftPanel'">
    <h3>Store</h3>
-   <label>Organic?</label>
-
+    <label>Organic?</label>
+	<!-- 	<input #organic type="checkbox"> -->
+		<input type="checkbox" [(ngModel)]="organic" (click)="isOrganic()">
+     <!-- | BioPipe: organic -->
+ 
    <span>{{message}}</span>
-	<div [ngClass]="'storeBox'" *ngFor="let item of storeItems" >
+	<div [ngClass]="'storeBox'" *ngFor="let item of storeItems | PricePipe:sliderValue | BioPipe: organic" >
 	  <div>
 		<div >
 		  <h4><a href="#">{{item?.name}}</a></h4>
 		  <h4 >Price: {{item?.price}}</h4>
 		  <p>Organic: {{item?.organic}}</p>
+		  <button>
+      	<a [routerLink]="['/product', item?._id]">Info Product</a>
+    	</button>
 		</div>
 		<div>
 		  <button type="submit" (click)="addItemInCart(item)">Add to Cart</button>
@@ -17,25 +23,15 @@
 	</div>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
 <div>  
-  <p>
-  0
-    <input type="range" min="0" max="100" 
+
+
+  <label>Min Price</label>
+  <input type="range" min="0" max="100" 
           [value]="sliderValue" 
           (input)="sliderValue = $event.target.value" />
-  100
-  </p>
   <span>{{ sliderValue }}</span>
-    <ul>
-      <li *ngFor="let data of storeItems | PricePipe:sliderValue">
-        {{ data.name }} ({{ data.price }})
-      </li>
-    </ul>
+   
 </div> 
 
 
